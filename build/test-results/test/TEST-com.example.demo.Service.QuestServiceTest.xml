@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.demo.Service.QuestServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-15T15:39:10.948Z" hostname="Suui-MacBookPro.local" time="0.036">
+  <properties/>
+  <testcase name="이미_보유한_재료면_새로_만들지_않고_수량만_증가한다()" classname="com.example.demo.Service.QuestServiceTest" time="0.035"/>
+  <testcase name="수동_퀘스트_완료시_보상으로_ownerId를_가진_IngredientCard가_지급된다()" classname="com.example.demo.Service.QuestServiceTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

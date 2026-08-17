@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.elixircodex.backend.alchemy.AlchemyNameServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-08-15T15:39:08.262Z" hostname="Suui-MacBookPro.local" time="0.179">
+  <properties/>
+  <testcase name="정상_응답을_파싱해서_이름과_조언을_반환한다()" classname="com.elixircodex.backend.alchemy.AlchemyNameServiceTest" time="0.107"/>
+  <testcase name="API_호출이_실패하면_전용_예외를_던진다()" classname="com.elixircodex.backend.alchemy.AlchemyNameServiceTest" time="0.003"/>
+  <testcase name="응답_형식이_JSON이_아니면_전용_예외를_던진다()" classname="com.elixircodex.backend.alchemy.AlchemyNameServiceTest" time="0.002"/>
+  <testcase name="isMutated가_true면_시스템_프롬프트에_변종_지시문이_추가된다()" classname="com.elixircodex.backend.alchemy.AlchemyNameServiceTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

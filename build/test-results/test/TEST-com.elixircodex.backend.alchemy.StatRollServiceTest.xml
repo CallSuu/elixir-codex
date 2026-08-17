@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.elixircodex.backend.alchemy.StatRollServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-08-15T15:39:08.540Z" hostname="Suui-MacBookPro.local" time="0.044">
+  <properties/>
+  <testcase name="굴림이_99이면_등급_최댓값이_나온다()" classname="com.elixircodex.backend.alchemy.StatRollServiceTest" time="0.009"/>
+  <testcase name="테마별로_정의된_스탯_이름이_그대로_나온다()" classname="com.elixircodex.backend.alchemy.StatRollServiceTest" time="0.002"/>
+  <testcase name="등급별_결과값이_정의된_범위_안에_들어온다()" classname="com.elixircodex.backend.alchemy.StatRollServiceTest" time="0.032"/>
+  <testcase name="굴림이_0이면_등급_최솟값이_나온다()" classname="com.elixircodex.backend.alchemy.StatRollServiceTest" time="0.001"/>
+  <testcase name="굴림이_중간값이면_비례한_값이_나온다()" classname="com.elixircodex.backend.alchemy.StatRollServiceTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.elixircodex.backend.attendance.AttendanceControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-08-15T15:39:08.671Z" hostname="Suui-MacBookPro.local" time="0.011">
+  <properties/>
+  <testcase name="중복_체크시_예외가_그대로_전파된다()" classname="com.elixircodex.backend.attendance.AttendanceControllerTest" time="0.01"/>
+  <testcase name="정상_체크시_결과를_그대로_반환한다()" classname="com.elixircodex.backend.attendance.AttendanceControllerTest" time="0.001"/>
+  <testcase name="상태조회는_결과를_그대로_반환한다()" classname="com.elixircodex.backend.attendance.AttendanceControllerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
