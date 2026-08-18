@@ -97,14 +97,13 @@ public class SynthesizeService {
 
     private ElixirCard buildFixedRecipeCard(Long ownerId, FixedRecipe recipe, List<String> ingredientNames) {
         Map<String, Integer> stats = rollBonusedStats(recipe);
-        String imageUrl = resolveImageUrl(toArtGrade(recipe.getGrade()), recipe.getThemeCategory(), recipe.getName());
 
         return ElixirCard.builder()
                 .ownerId(ownerId)
                 .name(recipe.getName())
                 .grade(recipe.getGrade())
                 .themeCategory(recipe.getThemeCategory())
-                .imageUrl(imageUrl)
+                .imageUrl(recipe.getImageUrl())
                 .adviserComment(recipe.getAdviserComment())
                 .ingredientSummary(String.join(", ", ingredientNames))
                 .stats(stats)

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.stack.IngredientCardRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:01.504Z" hostname="Suui-MacBookPro.local" time="1.008">
+<testsuite name="com.elixircodex.backend.stack.IngredientCardRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:38.638Z" hostname="Suui-MacBookPro.local" time="1.245">
   <properties/>
-  <testcase name="findByOwnerIdOrderByGradeDescCreatedAtDesc는_등급_내림차순으로_정렬한다()" classname="com.elixircodex.backend.stack.IngredientCardRepositoryTest" time="0.169"/>
-  <testcase name="findByOwnerIdAndNameAndGrade는_등급이_다르면_찾지_못한다()" classname="com.elixircodex.backend.stack.IngredientCardRepositoryTest" time="0.009"/>
-  <testcase name="findByOwnerIdAndNameAndGrade는_동일한_이름과_등급의_카드를_찾는다()" classname="com.elixircodex.backend.stack.IngredientCardRepositoryTest" time="0.002"/>
-  <testcase name="increaseQuantity_호출후_저장하면_수량이_1_증가한다()" classname="com.elixircodex.backend.stack.IngredientCardRepositoryTest" time="0.007"/>
+  <testcase name="findByOwnerIdOrderByGradeDescCreatedAtDesc는_등급_내림차순으로_정렬한다()" classname="com.elixircodex.backend.stack.IngredientCardRepositoryTest" time="0.227"/>
+  <testcase name="findByOwnerIdAndNameAndGrade는_등급이_다르면_찾지_못한다()" classname="com.elixircodex.backend.stack.IngredientCardRepositoryTest" time="0.011"/>
+  <testcase name="findByOwnerIdAndNameAndGrade는_동일한_이름과_등급의_카드를_찾는다()" classname="com.elixircodex.backend.stack.IngredientCardRepositoryTest" time="0.003"/>
+  <testcase name="increaseQuantity_호출후_저장하면_수량이_1_증가한다()" classname="com.elixircodex.backend.stack.IngredientCardRepositoryTest" time="0.011"/>
   <testcase name="빌더로_생성시_quantity_기본값은_1이다()" classname="com.elixircodex.backend.stack.IngredientCardRepositoryTest" time="0.001"/>
   <system-out><![CDATA[
   .   ____          _            __ _ _
@@ -16,17 +16,17 @@
 
  :: Spring Boot ::                (v4.1.0)
 
-2026-08-18T19:04:01.524+09:00  INFO 77940 --- [    Test worker] c.e.b.s.IngredientCardRepositoryTest     : Starting IngredientCardRepositoryTest using Java 17.0.18 with PID 77940 (started by suhyeokyun in /Users/suhyeokyun/IdeaProjects/elixir-codex)
-2026-08-18T19:04:01.525+09:00  INFO 77940 --- [    Test worker] c.e.b.s.IngredientCardRepositoryTest     : No active profile set, falling back to 1 default profile: "default"
-2026-08-18T19:04:01.571+09:00  INFO 77940 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-08-18T19:04:01.587+09:00  INFO 77940 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 2 JPA repository interfaces.
-2026-08-18T19:04:01.662+09:00  INFO 77940 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-08-18T19:04:01.688+09:00  INFO 77940 --- [    Test worker] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
-2026-08-18T19:04:01.793+09:00  INFO 77940 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-08-18T19:04:01.807+09:00  INFO 77940 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-08-18T19:04:01.869+09:00  INFO 77940 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:elixir_codex user=SA
-2026-08-18T19:04:01.870+09:00  INFO 77940 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-08-18T19:04:01.893+09:00  INFO 77940 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-08-19T00:07:38.664+09:00  INFO 80799 --- [    Test worker] c.e.b.s.IngredientCardRepositoryTest     : Starting IngredientCardRepositoryTest using Java 17.0.18 with PID 80799 (started by suhyeokyun in /Users/suhyeokyun/IdeaProjects/elixir-codex)
+2026-08-19T00:07:38.664+09:00  INFO 80799 --- [    Test worker] c.e.b.s.IngredientCardRepositoryTest     : No active profile set, falling back to 1 default profile: "default"
+2026-08-19T00:07:38.713+09:00  INFO 80799 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-19T00:07:38.729+09:00  INFO 80799 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 2 JPA repository interfaces.
+2026-08-19T00:07:38.811+09:00  INFO 80799 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-19T00:07:38.848+09:00  INFO 80799 --- [    Test worker] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-08-19T00:07:38.988+09:00  INFO 80799 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-19T00:07:39.004+09:00  INFO 80799 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-19T00:07:39.075+09:00  INFO 80799 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:elixir_codex user=SA
+2026-08-19T00:07:39.075+09:00  INFO 80799 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-19T00:07:39.102+09:00  INFO 80799 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [jdbc:h2:mem:elixir_codex]
 	Database driver: H2 JDBC Driver
 	Database dialect: H2Dialect
@@ -38,14 +38,14 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-08-18T19:04:02.201+09:00  INFO 77940 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-19T00:07:39.466+09:00  INFO 80799 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: drop table if exists ingredient_card cascade 
 Hibernate: drop table if exists supplement_log cascade 
 Hibernate: create table ingredient_card (quantity integer not null, created_at timestamp(6), id bigint generated by default as identity, owner_id bigint, name varchar(255), source_quest_title varchar(255), grade enum ('COMMON','EPIC','RARE'), primary key (id))
 Hibernate: create table supplement_log (confidence_score integer, consumed_date date, is_affiliate_product boolean not null, is_verified boolean not null, created_at timestamp(6), id bigint generated by default as identity, owner_id bigint, product_name varchar(255), primary key (id))
-2026-08-18T19:04:02.215+09:00  INFO 77940 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-08-18T19:04:02.249+09:00  INFO 77940 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-08-18T19:04:02.321+09:00  INFO 77940 --- [    Test worker] c.e.b.s.IngredientCardRepositoryTest     : Started IngredientCardRepositoryTest in 0.806 seconds (process running for 2.934)
+2026-08-19T00:07:39.488+09:00  INFO 80799 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-19T00:07:39.533+09:00  INFO 80799 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-19T00:07:39.626+09:00  INFO 80799 --- [    Test worker] c.e.b.s.IngredientCardRepositoryTest     : Started IngredientCardRepositoryTest in 0.974 seconds (process running for 3.787)
 Hibernate: insert into ingredient_card (created_at,grade,name,owner_id,quantity,source_quest_title,id) values (?,?,?,?,?,?,default)
 Hibernate: insert into ingredient_card (created_at,grade,name,owner_id,quantity,source_quest_title,id) values (?,?,?,?,?,?,default)
 Hibernate: insert into ingredient_card (created_at,grade,name,owner_id,quantity,source_quest_title,id) values (?,?,?,?,?,?,default)

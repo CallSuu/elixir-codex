@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.specialelixir.SpecialElixirControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:01.482Z" hostname="Suui-MacBookPro.local" time="0.002">
+<testsuite name="com.elixircodex.backend.specialelixir.SpecialElixirControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:38.612Z" hostname="Suui-MacBookPro.local" time="0.002">
   <properties/>
-  <testcase name="삭제_요청은_서비스로_그대로_위임된다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirControllerTest" time="0.0"/>
+  <testcase name="삭제_요청은_서비스로_그대로_위임된다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirControllerTest" time="0.001"/>
   <testcase name="목록_조회는_서비스_결과를_그대로_반환한다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirControllerTest" time="0.0"/>
   <testcase name="생성_요청은_서비스_결과를_그대로_반환한다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirControllerTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

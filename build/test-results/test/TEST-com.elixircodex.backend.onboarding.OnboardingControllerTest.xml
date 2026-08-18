@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.onboarding.OnboardingControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:01.481Z" hostname="Suui-MacBookPro.local" time="0.001">
+<testsuite name="com.elixircodex.backend.onboarding.OnboardingControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:38.610Z" hostname="Suui-MacBookPro.local" time="0.002">
   <properties/>
-  <testcase name="존재하지_않는_유저면_예외가_그대로_전파된다()" classname="com.elixircodex.backend.onboarding.OnboardingControllerTest" time="0.001"/>
-  <testcase name="정상_요청이면_결과를_그대로_반환한다()" classname="com.elixircodex.backend.onboarding.OnboardingControllerTest" time="0.0"/>
+  <testcase name="존재하지_않는_유저면_예외가_그대로_전파된다()" classname="com.elixircodex.backend.onboarding.OnboardingControllerTest" time="0.0"/>
+  <testcase name="정상_요청이면_결과를_그대로_반환한다()" classname="com.elixircodex.backend.onboarding.OnboardingControllerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

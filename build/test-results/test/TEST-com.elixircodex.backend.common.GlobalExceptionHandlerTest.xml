@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.common.GlobalExceptionHandlerTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:00.650Z" hostname="Suui-MacBookPro.local" time="0.82">
+<testsuite name="com.elixircodex.backend.common.GlobalExceptionHandlerTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:37.474Z" hostname="Suui-MacBookPro.local" time="1.119">
   <properties/>
-  <testcase name="StackValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.049"/>
-  <testcase name="잘못된_JSON_요청본문은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
-  <testcase name="멀티파트_요청에서_필수_파트_누락은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
-  <testcase name="SupplementVerificationException은_502와_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.006"/>
-  <testcase name="SpecialElixirValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.003"/>
-  <testcase name="잘못된_enum_쿼리파라미터는_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
-  <testcase name="AuthenticatedUserException은_401과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.003"/>
-  <testcase name="필수_쿼리파라미터_누락은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.003"/>
-  <testcase name="WizardRoomValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.003"/>
-  <testcase name="AlchemyNameGenerationException은_502와_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
-  <testcase name="MethodArgumentNotValidException은_400과_공통메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.043"/>
-  <testcase name="SynthesizeValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
+  <testcase name="StackValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.066"/>
+  <testcase name="잘못된_JSON_요청본문은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.005"/>
+  <testcase name="멀티파트_요청에서_필수_파트_누락은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.007"/>
+  <testcase name="SupplementVerificationException은_502와_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.009"/>
+  <testcase name="SpecialElixirValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.006"/>
+  <testcase name="잘못된_enum_쿼리파라미터는_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.007"/>
+  <testcase name="AuthenticatedUserException은_401과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
+  <testcase name="필수_쿼리파라미터_누락은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
+  <testcase name="WizardRoomValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.005"/>
+  <testcase name="AlchemyNameGenerationException은_502와_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.007"/>
+  <testcase name="MethodArgumentNotValidException은_400과_공통메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.046"/>
+  <testcase name="SynthesizeValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.006"/>
   <testcase name="MaxUploadSizeExceededException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.002"/>
-  <testcase name="OnboardingValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
-  <testcase name="CodexValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.003"/>
-  <testcase name="OnboardingClassificationException은_502와_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.002"/>
-  <testcase name="예상하지_못한_예외는_500과_공통메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.006"/>
-  <testcase name="AttendanceValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.003"/>
+  <testcase name="OnboardingValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.005"/>
+  <testcase name="CodexValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
+  <testcase name="OnboardingClassificationException은_502와_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
+  <testcase name="예상하지_못한_예외는_500과_공통메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.009"/>
+  <testcase name="AttendanceValidationException은_400과_메시지로_변환된다()" classname="com.elixircodex.backend.common.GlobalExceptionHandlerTest" time="0.004"/>
   <system-out><![CDATA[
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -29,13 +29,13 @@
 
  :: Spring Boot ::                (v4.1.0)
 
-2026-08-18T19:04:00.883+09:00  INFO 77940 --- [    Test worker] c.e.b.common.GlobalExceptionHandlerTest  : Starting GlobalExceptionHandlerTest using Java 17.0.18 with PID 77940 (started by suhyeokyun in /Users/suhyeokyun/IdeaProjects/elixir-codex)
-2026-08-18T19:04:00.884+09:00  INFO 77940 --- [    Test worker] c.e.b.common.GlobalExceptionHandlerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-08-18T19:04:01.286+09:00  INFO 77940 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-08-18T19:04:01.287+09:00  INFO 77940 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-08-18T19:04:01.288+09:00  INFO 77940 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-08-18T19:04:01.302+09:00  INFO 77940 --- [    Test worker] c.e.b.common.GlobalExceptionHandlerTest  : Started GlobalExceptionHandlerTest in 0.553 seconds (process running for 1.916)
-2026-08-18T19:04:01.462+09:00 ERROR 77940 --- [    Test worker] c.e.b.common.GlobalExceptionHandler      : 예상하지 못한 오류가 발생했습니다
+2026-08-19T00:07:37.771+09:00  INFO 80799 --- [    Test worker] c.e.b.common.GlobalExceptionHandlerTest  : Starting GlobalExceptionHandlerTest using Java 17.0.18 with PID 80799 (started by suhyeokyun in /Users/suhyeokyun/IdeaProjects/elixir-codex)
+2026-08-19T00:07:37.771+09:00  INFO 80799 --- [    Test worker] c.e.b.common.GlobalExceptionHandlerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-08-19T00:07:38.344+09:00  INFO 80799 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-08-19T00:07:38.344+09:00  INFO 80799 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-08-19T00:07:38.346+09:00  INFO 80799 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-08-19T00:07:38.364+09:00  INFO 80799 --- [    Test worker] c.e.b.common.GlobalExceptionHandlerTest  : Started GlobalExceptionHandlerTest in 0.761 seconds (process running for 2.524)
+2026-08-19T00:07:38.581+09:00 ERROR 80799 --- [    Test worker] c.e.b.common.GlobalExceptionHandler      : 예상하지 못한 오류가 발생했습니다
 
 java.lang.RuntimeException: boom
 	at com.elixircodex.backend.stack.StackService.evaluate(StackService.java:17) ~[main/:na]

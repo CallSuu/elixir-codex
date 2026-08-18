@@ -50,6 +50,9 @@ public class FixedRecipe {
 
     private int bonusPercent;
 
+    @Column(columnDefinition = "MEDIUMTEXT")
+    private String imageUrl;
+
     private String cardDescription;
 
     private String adviserComment;

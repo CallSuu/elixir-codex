@@ -1,6 +1,6 @@
 # 등급 산정·코덱스 등록 API 명세서
 
-- 문서 버전: 1.11
+- 문서 버전: 1.12
 - 작성일: 2026-08-18
 - 구현 기준 브랜치: develop
 - 적용 범위: `POST /api/synthesize` (연금술 연성 실행, 등급 산정, 수치형 스탯 산출, 돌연변이 판정, 고정 레시피 매칭), `GET /api/codex` (연성된 일반 엘릭서 카드 목록 조회), `GET /api/codex/mutations` (돌연변이 엘릭서 카드 목록 조회), `GET /api/codex/{elixirCardId}` (카드 상세 조회)
@@ -71,7 +71,7 @@ http://localhost:8080
 9. 최종 등급(`finalGrade`, 프리즈마틱 판정까지 모두 끝난 값)이 확정된 직후, 5~8단계와 별개로 4% 확률(0~99 굴림에서 0~3)로 돌연변이 여부(`isMutated`)를 판정한다 (아래 3.2절 참고)
 10. `StatRollService.rollStats()`에 넘길 등급을 정한다: 돌연변이가 아니면 `finalGrade` 그대로, 돌연변이면 한 단계 위 등급(COMMON→RARE, RARE→EPIC, EPIC·PRISMATIC_LEGENDARY는 이미 최상위라 그대로)을 사용해 수치형 스탯을 산출한다 (테마별 스탯 이름·등급별 값 범위는 아래 6절 참고). ElixirCard에 저장되는 `grade` 필드 자체는 이 단계와 무관하게 `finalGrade` 그대로 유지된다
 11. 투입된 IngredientCard들의 이름을 모아 `AlchemyNameService.generateName(themeCategory, ingredientNames, isMutated)`를 호출해 `name`, `adviserComment` 생성 (실패 시 502, `ALCHEMY_NAME_API_SPEC.md` 오류 3종과 동일). 돌연변이면 시스템 프롬프트에 흑보랏빛·기괴한 톤 지시문이 추가된다 (아래 3.2절 참고)
-12. 아트 조회: 고정 레시피가 매칭됐으면 그 레시피의 `grade`/`themeCategory`를 그대로 쓰고, 아니면 `finalGrade`(`PRISMATIC_LEGENDARY`는 EPIC으로 취급)와 요청의 `themeCategory`를 쓴다 (돌연변이여도 아트는 10단계의 등급 상승과 무관). `elixir.art.generation-enabled=true`(기본값)이면 `ArtGenerationService.generate(grade, themeCategory, name)`으로 GPT 이미지 생성을 먼저 시도하고, 여기서 `ArtGenerationException`이 발생하면 경고 로그를 남기고 기존 `ArtMatchingService.findImageUrl(grade, themeCategory)` 템플릿 매칭으로 폴백한다. `elixir.art.generation-enabled=false`면 실시간 생성을 아예 시도하지 않고 바로 `ArtMatchingService`로 간다 (아래 3.1절 참고)
+12. 아트 조회: 고정 레시피가 매칭됐으면 AI 생성도 템플릿 매칭도 시도하지 않고 그 `FixedRecipe.imageUrl`(미리 준비된 이미지 파일을 base64 데이터 URI로 시딩해둔 값)을 그대로 쓴다 (아래 3.3절 참고). 매칭되지 않았으면 `finalGrade`(`PRISMATIC_LEGENDARY`는 EPIC으로 취급)와 요청의 `themeCategory`를 써서 지금까지와 동일하게 진행한다 (돌연변이여도 아트는 10단계의 등급 상승과 무관). `elixir.art.generation-enabled=true`(기본값)이면 `ArtGenerationService.generate(grade, themeCategory, name)`으로 GPT 이미지 생성을 먼저 시도하고, 여기서 `ArtGenerationException`이 발생하면 경고 로그를 남기고 기존 `ArtMatchingService.findImageUrl(grade, themeCategory)` 템플릿 매칭으로 폴백한다. `elixir.art.generation-enabled=false`면 실시간 생성을 아예 시도하지 않고 바로 `ArtMatchingService`로 간다 (아래 3.1절 참고)
 13. 위 결과로 ElixirCard를 저장하고 응답 반환 (`ingredientSummary`는 투입 재료 이름을 `, `로 join해 저장, `stats`는 10단계 결과, `isMutated`는 9단계 결과를 그대로 저장. 고정 레시피 매칭 시에는 `isMutated=false`·`serialNumber=null` 고정)
 
 ### 3.1 실시간 아트 생성과 템플릿 매칭 폴백
@@ -94,13 +94,19 @@ http://localhost:8080
 
 **매칭 규칙**: 투입된 IngredientCard `name` 집합이 어떤 `FixedRecipe.requiredIngredientNames`와 개수·구성 모두 정확히 같아야 매칭된다. 재료가 하나라도 더 많거나 적으면(중복 투입으로 개수만 달라진 경우 포함) 매칭되지 않고 절차형 로직으로 진행한다. 여러 `FixedRecipe`와 동시에 매칭될 수 없도록 재료 조합이 서로 겹치지 않게 등록하는 것은 데이터 시딩 책임이며, 코드 레벨에서는 첫 번째로 찾은 것을 사용한다.
 
-**매칭 시 확정되는 값** (전부 `FixedRecipe`에서 그대로 가져옴, GPT 호출 없음):
+**매칭 시 확정되는 값** (전부 `FixedRecipe`에서 그대로 가져옴, GPT/이미지 생성 API 호출 없음):
 - `name`, `adviserComment`, `grade`(현재 모든 시드 레시피가 EPIC 고정), `themeCategory` — 이때 `themeCategory`는 **요청의 `themeCategory`가 아니라 레시피 자체의 값**을 쓴다 (레시피는 재료 조합만으로 식별되는 고정 결과물이라, 유저가 요청에 실수로 다른 테마를 넣어도 결과가 바뀌지 않는다)
+- `imageUrl` — `FixedRecipe.imageUrl`을 그대로 쓴다. `src/main/resources/fixed-recipe-art/`에 미리 준비해둔 PNG 파일을 `FixedRecipeDataInitializer`가 시딩 시점에 base64로 인코딩해 `data:image/png;base64,{...}` 데이터 URI로 저장해둔 값이며, 매칭될 때마다 매번 같은 이미지가 나온다 (아래 3.3.1절 참고)
 - `scientificExplanation`, `cardDescription` — 절차형 카드에는 없는 고정 레시피 전용 필드 (아래 6절 참고)
 
 **스탯 산출**: `StatRollService.rollStats(recipe.grade, recipe.themeCategory)`로 평소와 동일하게 굴린 뒤, `recipe.bonusStatNames`에 해당하는 스탯 값에만 `1 + bonusPercent/100.0`을 곱한다(반올림). 곱한 값이 100을 넘으면 100으로 고정한다. `bonusStatNames`에 그 테마의 실제 스탯 이름이 아닌 값이 들어 있으면(다른 테마 스탯 이름을 잘못 넣은 경우 등) 조용히 무시된다 — 해당 이름의 스탯이 애초에 굴려진 맵에 없기 때문.
 
-**절차형 로직과의 차이**: 매칭되면 프리즈마틱 판정·COMMON/RARE 업그레이드 확률 굴림·돌연변이 판정을 전부 건너뛴다. 그 결과 `serialNumber`는 항상 `null`, `isMutated`는 항상 `false`다. 아트만은 매칭 여부와 무관하게 항상 `ArtGenerationService`/`ArtMatchingService`를 그대로 사용한다(레시피의 `grade`·`themeCategory` 기준).
+**절차형 로직과의 차이**: 매칭되면 프리즈마틱 판정·COMMON/RARE 업그레이드 확률 굴림·돌연변이 판정을 전부 건너뛴다. 그 결과 `serialNumber`는 항상 `null`, `isMutated`는 항상 `false`다. 아트도 마찬가지로 건너뛴다 — `ArtGenerationService`/`ArtMatchingService`는 전혀 호출되지 않고, `elixir.art.generation-enabled` 설정값과도 무관하게 항상 `FixedRecipe.imageUrl`을 그대로 쓴다. 매칭되지 않았을 때만 지금까지와 동일하게 `ArtGenerationService`/`ArtMatchingService`가 호출된다.
+
+### 3.3.1 고정 레시피 아트 이미지 시딩
+
+- 이미지 파일 5개(`1-tangle-baekok.png` ~ `5-harmony.png`)는 `src/main/resources/fixed-recipe-art/`에 번들로 포함되어 배포된다. `FixedRecipeDataInitializer`가 `ClassPathResource`로 각 파일을 읽어 base64로 인코딩하고, `data:image/png;base64,{인코딩값}` 형태의 데이터 URI로 만들어 해당 레시피의 `imageUrl` 컬럼에 저장한다.
+- 다른 시드 데이터(`QuestDataInitializer` 등)와 마찬가지로 `FixedRecipeRepository.count() > 0`이면 시딩을 건너뛴다. 즉 **`FixedRecipe` 테이블에 이미 행이 있는 상태에서 이미지 파일만 교체하고 재시작해도 DB의 `imageUrl`은 갱신되지 않는다** — 새 이미지를 반영하려면 `FixedRecipe` 관련 테이블을 비우고 재시작해야 한다 (`ddl-auto=update`가 스키마 컬럼 타입은 자동으로 안 바꿔주는 것과 같은 종류의 재시딩 가드 이슈).
 
 **현재 등록된 고정 레시피 5종** (`FixedRecipeDataInitializer` 시드 기준):
 
@@ -137,14 +143,14 @@ http://localhost:8080
 }
 ```
 
-고정 레시피 매칭(3.3절, 실제 호출로 확인):
+고정 레시피 매칭(3.3절, 실제 호출로 확인 — `황금 레몬`+`탱탱 젤리`+`백옥 진주` 조합으로 실제 연성해서 응답의 `imageUrl`이 `FixedRecipe.imageUrl`과 SHA-256 해시까지 완전히 일치함을 확인함):
 
 ```json
 {
   "elixirCardId": 2,
   "name": "탱글한 백옥 엘릭서",
   "grade": "EPIC",
-  "imageUrl": "https://placehold.co/400x600?text=EPIC-SKIN_ANTIOXIDANT-1",
+  "imageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtkA...(총 617,298자, FixedRecipeDataInitializer가 1-tangle-baekok.png를 인코딩한 값 그대로)",
   "adviserComment": "피부 속 깊은 어둠을 걷어내고 세월의 풍파에도 흔들리지 않는 찬란한 백옥빛 결계를 둘러줄게. 아주 피부가 맑고 깨끗해질 것 같은 완벽한 배합이야!",
   "serialNumber": null,
   "stats": {
@@ -319,6 +325,7 @@ REST 컨벤션상 404가 자연스러운 상황이지만, 이 프로젝트의 �
 | requiredIngredientNames | List\<String\> | 매칭 조건 — 투입 재료 이름 집합과 개수·구성이 정확히 같아야 함. `fixed_recipe_required_ingredients` 테이블에 `@ElementCollection`으로 저장 |
 | bonusStatNames | List\<String\> | 보너스 배율이 적용되는 스탯 이름 1개 이상. `fixed_recipe_bonus_stats` 테이블에 `@ElementCollection`으로 저장 |
 | bonusPercent | int | 보너스 배율(%). `stat * (1 + bonusPercent/100.0)`, 100 초과 시 100으로 캡핑 |
+| imageUrl | String (MEDIUMTEXT) | 매칭 시 카드의 `imageUrl`로 그대로 사용됨. `ElixirCard.imageUrl`과 동일하게 `MEDIUMTEXT`(base64 데이터 URI가 `VARCHAR(255)`를 넘기 때문). `FixedRecipeDataInitializer`가 `src/main/resources/fixed-recipe-art/`의 PNG 파일을 시딩 시점에 인코딩해 채운다 (3.3.1절 참고) |
 | cardDescription | String | 가마솥 연출 설명 |
 | adviserComment | String | 늘해랑의 고정 조언 문구 |
 | scientificExplanation | String (TEXT) | 성분별 기전 + 종합 메커니즘을 합친 긴 설명 |
@@ -395,3 +402,5 @@ REST 컨벤션상 404가 자연스러운 상황이지만, 이 프로젝트의 �
 - `GET /api/codex/{elixirCardId}`(`CodexCardDetailResponse`)에 `scientificExplanation`/`cardDescription` 노출 (현재는 연성 직후 `POST /api/synthesize` 응답에서만 확인 가능하고, 이후 코덱스 상세 조회로는 다시 볼 수 없음)
 - `FixedRecipe` 등록/수정/조회용 API (현재는 `FixedRecipeDataInitializer` 시드 데이터로만 존재하고, 서버 재시작 후에도 DB에 이미 데이터가 있으면 갱신되지 않음)
 - 여러 `FixedRecipe`가 동시에 매칭 가능한 재료 조합으로 등록되는 것을 막는 검증 (현재는 시딩 시점에 조합이 겹치지 않도록 주의하는 것에 의존하며, 겹치면 `findAll()` 순회 중 먼저 찾은 것을 사용)
+- 고정 레시피 아트 이미지 교체를 위한 무중단 재시딩 (이미지 파일만 바꾸고 재시작해도 `FixedRecipe` 테이블에 이미 행이 있으면 반영되지 않는다 — `FixedRecipe` 관련 테이블을 직접 비우고 재시작해야 함, 3.3.1절 참고)
+- 레시피별 여러 장/애니메이션 이미지 (현재 레시피당 정적 이미지 1장만 지원)

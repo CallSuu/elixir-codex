@@ -408,6 +408,7 @@ class SynthesizeServiceTest {
         return FixedRecipe.builder()
                 .id(1L).name(name).themeCategory(theme).grade(ElixirGrade.EPIC)
                 .requiredIngredientNames(ingredients).bonusStatNames(bonusStats).bonusPercent(bonusPercent)
+                .imageUrl("data:image/png;base64,FIXEDRECIPEIMAGE")
                 .cardDescription("카드 설명").adviserComment("늘해랑 조언").scientificExplanation("과학적 설명")
                 .build();
     }
@@ -440,7 +441,6 @@ class SynthesizeServiceTest {
         Map<String, Integer> rolledStats = new LinkedHashMap<>(Map.of(
                 "피부 투명도", 50, "항산화 방어", 40, "장벽 결속력", 45, "수분 보습도", 60));
         when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.SKIN_ANTIOXIDANT)).thenReturn(rolledStats);
-        givenArtMatchReturns("url");
 
         SynthesizeResponse response = service().synthesize(1L,
                 new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.FATIGUE_ENERGY));
@@ -451,11 +451,12 @@ class SynthesizeServiceTest {
         assertThat(response.adviserComment()).isEqualTo("늘해랑 조언");
         assertThat(response.cardDescription()).isEqualTo("카드 설명");
         assertThat(response.scientificExplanation()).isEqualTo("과학적 설명");
+        // 아트는 AI 생성/템플릿 매칭이 아니라 레시피에 미리 등록된 이미지를 그대로 써야 한다.
+        assertThat(response.imageUrl()).isEqualTo("data:image/png;base64,FIXEDRECIPEIMAGE");
         assertThat(response.stats().get("피부 투명도")).isEqualTo(60); // 50 * 1.2
         assertThat(response.stats().get("장벽 결속력")).isEqualTo(54); // 45 * 1.2
         assertThat(response.stats().get("항산화 방어")).isEqualTo(40); // 보너스 대상 아님, 그대로
-        verifyNoInteractions(alchemyNameService);
-        verify(artMatchingService).findImageUrl(Grade.EPIC, ThemeCategory.SKIN_ANTIOXIDANT);
+        verifyNoInteractions(alchemyNameService, artMatchingService, artGenerationService);
     }
 
     @Test
@@ -469,13 +470,13 @@ class SynthesizeServiceTest {
                 .thenReturn(new StackEvaluation(ingredients, 5, false, List.of()));
         when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.FATIGUE_ENERGY))
                 .thenReturn(new LinkedHashMap<>(Map.of("활력 마나량", 60, "신속 순환력", 50, "심장 박동력", 40, "피로 무력화", 45)));
-        givenArtMatchReturns("url");
 
         SynthesizeResponse response = service().synthesize(1L,
                 new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.SLEEP_REST));
 
         assertThat(response.name()).isEqualTo("불타는 태양 엘릭서");
         assertThat(response.grade()).isEqualTo(ElixirGrade.EPIC);
+        assertThat(response.imageUrl()).isEqualTo("data:image/png;base64,FIXEDRECIPEIMAGE");
     }
 
     @Test
@@ -489,7 +490,6 @@ class SynthesizeServiceTest {
                 .thenReturn(new StackEvaluation(ingredients, 5, false, List.of()));
         when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.DIET_BLOODSUGAR))
                 .thenReturn(new LinkedHashMap<>(Map.of("당독소 봉인", 60, "지방 연소열", 50, "포만 유지력", 40, "흡수 차단력", 45)));
-        givenArtMatchReturns("url");
 
         SynthesizeResponse response = service().synthesize(1L,
                 new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.SKIN_ANTIOXIDANT));
@@ -509,7 +509,6 @@ class SynthesizeServiceTest {
                 .thenReturn(new StackEvaluation(ingredients, 5, false, List.of()));
         when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.SLEEP_REST))
                 .thenReturn(new LinkedHashMap<>(Map.of("스트레스 차단", 60, "심연 수면도", 50, "근육 이완도", 40, "독소 정화력", 45)));
-        givenArtMatchReturns("url");
 
         SynthesizeResponse response = service().synthesize(1L,
                 new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.DIET_BLOODSUGAR));
@@ -530,7 +529,6 @@ class SynthesizeServiceTest {
                 .thenReturn(new StackEvaluation(ingredients, 7, false, List.of()));
         when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.FATIGUE_ENERGY))
                 .thenReturn(new LinkedHashMap<>(Map.of("활력 마나량", 60, "신속 순환력", 50, "심장 박동력", 40, "피로 무력화", 45)));
-        givenArtMatchReturns("url");
 
         SynthesizeResponse response = service().synthesize(1L,
                 new SynthesizeRequest(List.of(1L, 2L, 3L, 4L), ThemeCategory.SKIN_ANTIOXIDANT));
@@ -596,7 +594,6 @@ class SynthesizeServiceTest {
         when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.SKIN_ANTIOXIDANT))
                 .thenReturn(new LinkedHashMap<>(Map.of(
                         "피부 투명도", 90, "항산화 방어", 40, "장벽 결속력", 45, "수분 보습도", 60)));
-        givenArtMatchReturns("url");
 
         SynthesizeResponse response = service().synthesize(1L,
                 new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.SKIN_ANTIOXIDANT));

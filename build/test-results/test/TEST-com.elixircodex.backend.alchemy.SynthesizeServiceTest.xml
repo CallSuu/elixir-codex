@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.alchemy.SynthesizeServiceTest" tests="29" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:00.497Z" hostname="Suui-MacBookPro.local" time="0.08">
+<testsuite name="com.elixircodex.backend.alchemy.SynthesizeServiceTest" tests="29" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:37.163Z" hostname="Suui-MacBookPro.local" time="0.21">
   <properties/>
-  <testcase name="필요재료보다_하나_적으면_매칭되지_않고_절차형_로직으로_진행된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.038"/>
-  <testcase name="돌연변이여도_아트는_실제_확정등급_그대로_매칭한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.003"/>
+  <testcase name="필요재료보다_하나_적으면_매칭되지_않고_절차형_로직으로_진행된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.055"/>
+  <testcase name="돌연변이여도_아트는_실제_확정등급_그대로_매칭한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.004"/>
   <testcase name="필요재료보다_하나_많으면_매칭되지_않고_절차형_로직으로_진행된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
-  <testcase name="최종등급과_테마로_산출된_스탯이_카드에_저장된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
+  <testcase name="최종등급과_테마로_산출된_스탯이_카드에_저장된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
   <testcase name="점수10이상이고_제휴이면_굴림이_20일때도_프리즈마틱이_된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
-  <testcase name="돌연변이_판정에_실패하면_카드는_isMutated가_false로_저장되고_스탯은_원래_등급으로_산출된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.004"/>
-  <testcase name="점수6은_RARE업그레이드_굴림이_5면_EPIC이_된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="돌연변이_판정에_성공하면_카드는_isMutated가_true로_저장되고_스탯은_한단계_위_등급으로_산출된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="점수10이상이고_제휴가_아니면_굴림이_4일때_프리즈마틱이_된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
-  <testcase name="점수6은_RARE업그레이드_굴림이_6이면_RARE로_유지된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="레시피5_재료4개가_정확히_일치하면_온전한_조화_엘릭서로_고정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="EPIC등급_돌연변이는_이미_최상위이므로_스탯_등급_상승이_없다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
-  <testcase name="프리즈마틱_확정시_아트매칭은_EPIC등급으로_요청한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="보너스_적용후_스탯값이_100을_넘으면_100으로_고정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="레시피4_재료가_정확히_일치하면_은은한_달빛_엘릭서로_고정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="점수7은_프리즈마틱_시도없이_EPIC으로_확정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="점수2는_COMMON업그레이드_실패시_COMMON으로_확정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
+  <testcase name="돌연변이_판정에_실패하면_카드는_isMutated가_false로_저장되고_스탯은_원래_등급으로_산출된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.005"/>
+  <testcase name="점수6은_RARE업그레이드_굴림이_5면_EPIC이_된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
+  <testcase name="돌연변이_판정에_성공하면_카드는_isMutated가_true로_저장되고_스탯은_한단계_위_등급으로_산출된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.005"/>
+  <testcase name="점수10이상이고_제휴가_아니면_굴림이_4일때_프리즈마틱이_된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.017"/>
+  <testcase name="점수6은_RARE업그레이드_굴림이_6이면_RARE로_유지된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.008"/>
+  <testcase name="레시피5_재료4개가_정확히_일치하면_온전한_조화_엘릭서로_고정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.013"/>
+  <testcase name="EPIC등급_돌연변이는_이미_최상위이므로_스탯_등급_상승이_없다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.01"/>
+  <testcase name="프리즈마틱_확정시_아트매칭은_EPIC등급으로_요청한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.016"/>
+  <testcase name="보너스_적용후_스탯값이_100을_넘으면_100으로_고정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.009"/>
+  <testcase name="레시피4_재료가_정확히_일치하면_은은한_달빛_엘릭서로_고정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.006"/>
+  <testcase name="점수7은_프리즈마틱_시도없이_EPIC으로_확정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.003"/>
+  <testcase name="점수2는_COMMON업그레이드_실패시_COMMON으로_확정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
   <testcase name="점수2에서_COMMON업그레이드_굴림이_0이면_EPIC이_된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="점수10이상이어도_프리즈마틱_굴림에_실패하면_EPIC으로_남는다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
+  <testcase name="점수10이상이어도_프리즈마틱_굴림에_실패하면_EPIC으로_남는다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
   <testcase name="레시피1_재료가_정확히_일치하면_탱글한_백옥_엘릭서로_고정되고_절차형_판정을_건너뛴다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="생성활성화_상태에서_실시간_생성이_실패하면_템플릿매칭으로_폴백한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.003"/>
-  <testcase name="PRISMATIC_LEGENDARY_돌연변이도_이미_최상위이므로_스탯_등급_상승이_없다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="오늘_이미_연성했으면_예외를_던진다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="레시피2_재료가_정확히_일치하면_불타는_태양_엘릭서로_고정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="점수2에서_COMMON업그레이드_굴림이_3이면_RARE가_된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="생성활성화_상태에서_실시간_생성이_성공하면_그_결과를_사용하고_템플릿매칭은_호출하지_않는다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="ingredientSummary는_재료이름을_콤마로_join한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <testcase name="생성비활성화_상태에서는_실시간_생성을_시도하지_않고_바로_템플릿매칭한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
+  <testcase name="생성활성화_상태에서_실시간_생성이_실패하면_템플릿매칭으로_폴백한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.014"/>
+  <testcase name="PRISMATIC_LEGENDARY_돌연변이도_이미_최상위이므로_스탯_등급_상승이_없다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.004"/>
+  <testcase name="오늘_이미_연성했으면_예외를_던진다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.003"/>
+  <testcase name="레시피2_재료가_정확히_일치하면_불타는_태양_엘릭서로_고정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.003"/>
+  <testcase name="점수2에서_COMMON업그레이드_굴림이_3이면_RARE가_된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
+  <testcase name="생성활성화_상태에서_실시간_생성이_성공하면_그_결과를_사용하고_템플릿매칭은_호출하지_않는다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
+  <testcase name="ingredientSummary는_재료이름을_콤마로_join한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
+  <testcase name="생성비활성화_상태에서는_실시간_생성을_시도하지_않고_바로_템플릿매칭한다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.002"/>
   <testcase name="레시피3_재료가_정확히_일치하면_가뿐한_칠흑_엘릭서로_고정된다()" classname="com.elixircodex.backend.alchemy.SynthesizeServiceTest" time="0.001"/>
-  <system-out><![CDATA[19:04:00.568 [Test worker] WARN com.elixircodex.backend.alchemy.SynthesizeService -- 실시간 아트 생성 실패, 템플릿 매칭으로 폴백합니다: 실시간 아트 생성 요청이 실패했습니다
+  <system-out><![CDATA[00:07:37.343 [Test worker] WARN com.elixircodex.backend.alchemy.SynthesizeService -- 실시간 아트 생성 실패, 템플릿 매칭으로 폴백합니다: 실시간 아트 생성 요청이 실패했습니다
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
