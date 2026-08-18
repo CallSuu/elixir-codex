@@ -28,6 +28,9 @@ import com.elixircodex.backend.stack.StackValidationException;
 import com.elixircodex.backend.stack.SupplementController;
 import com.elixircodex.backend.stack.SupplementVerificationException;
 import com.elixircodex.backend.stack.SupplementVerificationService;
+import com.elixircodex.backend.wizardroom.WizardRoomController;
+import com.elixircodex.backend.wizardroom.WizardRoomService;
+import com.elixircodex.backend.wizardroom.WizardRoomValidationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -67,7 +70,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         AttendanceController.class,
         SupplementController.class,
         OnboardingController.class,
-        SpecialElixirController.class
+        SpecialElixirController.class,
+        WizardRoomController.class
 })
 @ContextConfiguration(classes = GlobalExceptionHandlerTest.TestConfig.class)
 @Import(GlobalExceptionHandler.class)
@@ -108,6 +112,8 @@ class GlobalExceptionHandlerTest {
     private OnboardingClassificationService onboardingClassificationService;
     @MockitoBean
     private SpecialElixirService specialElixirService;
+    @MockitoBean
+    private WizardRoomService wizardRoomService;
     @MockitoBean
     private AuthenticatedUserService authenticatedUserService;
 
@@ -227,6 +233,16 @@ class GlobalExceptionHandlerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message")
                         .value("스페셜 엘릭서는 최대 3개까지 저장할 수 있습니다. 기존 엘릭서를 삭제한 뒤 다시 시도해주세요."));
+    }
+
+    @Test
+    void WizardRoomValidationException은_400과_메시지로_변환된다() throws Exception {
+        when(wizardRoomService.getPublicRoom(2L))
+                .thenThrow(new WizardRoomValidationException("공개되지 않은 방입니다"));
+
+        mockMvc.perform(get("/api/wizard-room/2"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("공개되지 않은 방입니다"));
     }
 
     @Test

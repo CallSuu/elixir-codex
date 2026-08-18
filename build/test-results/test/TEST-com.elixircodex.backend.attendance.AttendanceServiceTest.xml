@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.attendance.AttendanceServiceTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:22.029Z" hostname="Suui-MacBookPro.local" time="0.042">
+<testsuite name="com.elixircodex.backend.attendance.AttendanceServiceTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:00.590Z" hostname="Suui-MacBookPro.local" time="0.037">
   <properties/>
-  <testcase name="어제_출석했으면_연속일수가_증가한다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.038"/>
-  <testcase name="오늘_이미_체크했으면_예외를_던진다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.0"/>
+  <testcase name="어제_출석했으면_연속일수가_증가한다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.033"/>
+  <testcase name="오늘_이미_체크했으면_예외를_던진다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.001"/>
   <testcase name="상태조회는_최근_연속일수와_보상목록을_반환한다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.001"/>
   <testcase name="하루_이상_공백이_있으면_연속일수가_1로_초기화된다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.0"/>
   <testcase name="기록이_없으면_상태조회는_연속일수0을_반환한다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.0"/>
   <testcase name="연속7일이면_가구보상이_지급된다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.0"/>
-  <testcase name="첫_체크인이면_연속일수는_1이다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.0"/>
+  <testcase name="첫_체크인이면_연속일수는_1이다()" classname="com.elixircodex.backend.attendance.AttendanceServiceTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

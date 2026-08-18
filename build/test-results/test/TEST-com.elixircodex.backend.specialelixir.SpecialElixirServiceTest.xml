@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:22.882Z" hostname="Suui-MacBookPro.local" time="0.022">
+<testsuite name="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:01.484Z" hostname="Suui-MacBookPro.local" time="0.02">
   <properties/>
-  <testcase name="본인_것이_아닌_엘릭서를_삭제하려하면_예외를_던진다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.019"/>
+  <testcase name="본인_것이_아닌_엘릭서를_삭제하려하면_예외를_던진다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.017"/>
   <testcase name="정상_생성시_분류결과와_생성된_이름_이미지로_저장된다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.001"/>
-  <testcase name="이미_3개를_보유하고_있으면_예외를_던지고_GPT를_호출하지_않는다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.0"/>
-  <testcase name="목록_조회는_ownerId의_엘릭서를_전부_반환한다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.001"/>
-  <testcase name="본인_엘릭서를_삭제하면_정상적으로_삭제된다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.0"/>
-  <testcase name="존재하지_않는_엘릭서를_삭제하려하면_예외를_던진다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.001"/>
+  <testcase name="이미_3개를_보유하고_있으면_예외를_던지고_GPT를_호출하지_않는다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.001"/>
+  <testcase name="목록_조회는_ownerId의_엘릭서를_전부_반환한다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.0"/>
+  <testcase name="본인_엘릭서를_삭제하면_정상적으로_삭제된다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.001"/>
+  <testcase name="존재하지_않는_엘릭서를_삭제하려하면_예외를_던진다()" classname="com.elixircodex.backend.specialelixir.SpecialElixirServiceTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

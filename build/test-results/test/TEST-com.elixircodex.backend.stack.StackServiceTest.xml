@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.stack.StackServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:23.942Z" hostname="Suui-MacBookPro.local" time="0.049">
+<testsuite name="com.elixircodex.backend.stack.StackServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:02.514Z" hostname="Suui-MacBookPro.local" time="0.041">
   <properties/>
-  <testcase name="투입할_재료가_없으면_예외를_던진다()" classname="com.elixircodex.backend.stack.StackServiceTest" time="0.047"/>
+  <testcase name="투입할_재료가_없으면_예외를_던진다()" classname="com.elixircodex.backend.stack.StackServiceTest" time="0.039"/>
   <testcase name="제휴상품이_하나도_없으면_제휴부스트는_false다()" classname="com.elixircodex.backend.stack.StackServiceTest" time="0.001"/>
-  <testcase name="자동_편입된_영양제_중_하나라도_제휴상품이면_제휴부스트가_적용된다()" classname="com.elixircodex.backend.stack.StackServiceTest" time="0.001"/>
+  <testcase name="자동_편입된_영양제_중_하나라도_제휴상품이면_제휴부스트가_적용된다()" classname="com.elixircodex.backend.stack.StackServiceTest" time="0.0"/>
   <testcase name="오늘_인증된_영양제가_없으면_예외를_던진다()" classname="com.elixircodex.backend.stack.StackServiceTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

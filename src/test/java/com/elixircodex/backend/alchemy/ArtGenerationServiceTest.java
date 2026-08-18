@@ -33,18 +33,19 @@ class ArtGenerationServiceTest {
     private ArtGenerationService service;
 
     @Test
-    void 정상_응답을_파싱해서_이미지URL을_반환한다() {
+    void 정상_응답을_파싱해서_데이터URI를_반환한다() {
         service = new ArtGenerationService(restTemplate, objectMapper, "test-key");
-        String openAiResponse = """
-                {"data":[{"url":"https://example.com/generated.png"}]}
+        String stabilityResponse = """
+                {"artifacts":[{"base64":"BASE64DATA","seed":1234,"finishReason":"SUCCESS"}]}
                 """;
-        when(restTemplate.postForEntity(eq("https://api.openai.com/v1/images/generations"),
+        when(restTemplate.postForEntity(
+                eq("https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image"),
                 any(HttpEntity.class), eq(String.class)))
-                .thenReturn(ResponseEntity.ok(openAiResponse));
+                .thenReturn(ResponseEntity.ok(stabilityResponse));
 
         String imageUrl = service.generate(Grade.EPIC, ThemeCategory.SLEEP_REST, "은은한 밤의 안식 포션");
 
-        assertThat(imageUrl).isEqualTo("https://example.com/generated.png");
+        assertThat(imageUrl).isEqualTo("data:image/png;base64,BASE64DATA");
     }
 
     @Test

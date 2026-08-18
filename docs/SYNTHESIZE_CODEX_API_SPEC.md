@@ -1,6 +1,6 @@
 # 등급 산정·코덱스 등록 API 명세서
 
-- 문서 버전: 1.9
+- 문서 버전: 1.11
 - 작성일: 2026-08-18
 - 구현 기준 브랜치: develop
 - 적용 범위: `POST /api/synthesize` (연금술 연성 실행, 등급 산정, 수치형 스탯 산출, 돌연변이 판정, 고정 레시피 매칭), `GET /api/codex` (연성된 일반 엘릭서 카드 목록 조회), `GET /api/codex/mutations` (돌연변이 엘릭서 카드 목록 조회), `GET /api/codex/{elixirCardId}` (카드 상세 조회)
@@ -76,8 +76,8 @@ http://localhost:8080
 
 ### 3.1 실시간 아트 생성과 템플릿 매칭 폴백
 
-- `ArtGenerationService`(`com.elixircodex.backend.alchemy`)가 OpenAI 이미지 생성 API(`dall-e-3`)를 호출해 카드 아트를 실시간으로 생성한다. 프롬프트는 고정 Style Seed("Dark fantasy gothic alchemist style, vintage elixir bottle, high detail illustration") + 등급 표현(EPIC: "ornate, glowing with power", RARE: "elegant, subtly enchanted", COMMON: "simple, humble") + `themeCategory.labelKo()` + 엘릭서 이름을 조합해서 만든다.
-- API 호출 실패, 10초 타임아웃(연결/응답 모두), 응답에서 이미지 URL을 추출하지 못하는 경우 모두 `ArtGenerationException`으로 통일되고, `SynthesizeService`는 이를 잡아 경고 로그만 남긴 뒤 기존 `ArtMatchingService`(사전 등록된 `ArtTemplate` 중 무작위 매칭) 결과로 대체한다. 이 폴백은 사용자에게 오류로 노출되지 않고 연성 자체는 정상 완료된다.
+- `ArtGenerationService`(`com.elixircodex.backend.alchemy`)가 Stability AI REST API(`stable-diffusion-xl-1024-v1-0` 엔진의 `text-to-image` 엔드포인트)를 호출해 카드 아트를 실시간으로 생성한다. 요청은 `cfg_scale=7`, `height`/`width`=1024, `samples=1`, `steps=30`로 고정하고, 프롬프트는 고정 Style Seed("Dark fantasy gothic alchemist style, vintage elixir bottle, high detail illustration") + 등급 표현(EPIC: "ornate, glowing with power", RARE: "elegant, subtly enchanted", COMMON: "simple, humble") + `themeCategory.labelKo()` + 엘릭서 이름을 조합해서 만든다. 응답의 `artifacts[0].base64`에서 base64 이미지를 꺼내 `data:image/png;base64,{base64}` 형태의 데이터 URI를 그대로 `imageUrl`로 사용한다 — 별도 이미지 저장소(S3 등) 연동 없이 데이터 URI 자체가 카드의 `imageUrl` 값이 된다.
+- API 호출 실패, 10초 타임아웃(연결/응답 모두), 응답에서 `artifacts[0].base64` 이미지 데이터를 추출하지 못하는 경우 모두 `ArtGenerationException`으로 통일되고, `SynthesizeService`는 이를 잡아 경고 로그만 남긴 뒤 기존 `ArtMatchingService`(사전 등록된 `ArtTemplate` 중 무작위 매칭) 결과로 대체한다. 이 폴백은 사용자에게 오류로 노출되지 않고 연성 자체는 정상 완료된다.
 - `elixir.art.generation-enabled` 설정값(`application.properties`, 기본 `true`)으로 실시간 생성 자체를 켜고 끌 수 있다. `false`로 두면 비용 문제 등으로 실시간 생성을 완전히 중단하고, 항상 템플릿 매칭만 사용하는 이전 동작으로 되돌아간다.
 - `GET /api/alchemy/art`(`AlchemyArtController`)는 이 변경과 무관하다. 여전히 `ArtMatchingService`만 직접 호출하는 템플릿 매칭 테스트 전용 엔드포인트로 남아 있다.
 
@@ -298,7 +298,7 @@ REST 컨벤션상 404가 자연스러운 상황이지만, 이 프로젝트의 �
 | name | String | 생성된 엘릭서 이름 |
 | grade | ElixirGrade | 최종 확정 등급 |
 | themeCategory | ThemeCategory | 연성 시 지정한 테마 |
-| imageUrl | String | 아트 이미지 URL. `elixir.art.generation-enabled=true`이고 실시간 생성이 성공하면 GPT가 생성한 이미지 URL, 그렇지 않으면(비활성화 또는 생성 실패로 폴백) 템플릿 매칭 결과 (3.1절 참고) |
+| imageUrl | String | 아트 이미지 URL. `elixir.art.generation-enabled=true`이고 실시간 생성이 성공하면 Stability AI가 생성한 이미지의 데이터 URI(`data:image/png;base64,...`), 그렇지 않으면(비활성화 또는 생성 실패로 폴백) 템플릿 매칭 결과의 일반 URL (3.1절 참고) |
 | adviserComment | String | 연금술사 시너지 조언 문구 |
 | serialNumber | Long (nullable) | PRISMATIC_LEGENDARY 확정 시에만 채번, 그 외 null |
 | ingredientSummary | String | 투입 재료 이름을 `, `로 join한 문자열 |

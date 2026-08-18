@@ -10,6 +10,7 @@ import com.elixircodex.backend.onboarding.OnboardingValidationException;
 import com.elixircodex.backend.specialelixir.SpecialElixirValidationException;
 import com.elixircodex.backend.stack.StackValidationException;
 import com.elixircodex.backend.stack.SupplementVerificationException;
+import com.elixircodex.backend.wizardroom.WizardRoomValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -72,6 +73,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(SpecialElixirValidationException.class)
     public ResponseEntity<Map<String, String>> handleSpecialElixirValidation(SpecialElixirValidationException e) {
+        return badRequest(e.getMessage());
+    }
+
+    @ExceptionHandler(WizardRoomValidationException.class)
+    public ResponseEntity<Map<String, String>> handleWizardRoomValidation(WizardRoomValidationException e) {
         return badRequest(e.getMessage());
     }
 

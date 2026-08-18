@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.demo.DemoApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:24.030Z" hostname="Suui-MacBookPro.local" time="0.585">
+<testsuite name="com.example.demo.DemoApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:02.624Z" hostname="Suui-MacBookPro.local" time="0.605">
   <properties/>
-  <testcase name="contextLoads()" classname="com.example.demo.DemoApplicationTests" time="0.002"/>
-  <system-out><![CDATA[2026-08-18T16:23:24.032+09:00  INFO 74720 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.demo.DemoApplicationTests]: DemoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-08-18T16:23:24.036+09:00  INFO 74720 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.DemoApplicationTests
-2026-08-18T16:23:24.038+09:00  INFO 74720 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.demo.DemoApplicationTests]: DemoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-08-18T16:23:24.038+09:00  INFO 74720 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.DemoApplicationTests
+  <testcase name="contextLoads()" classname="com.example.demo.DemoApplicationTests" time="0.001"/>
+  <system-out><![CDATA[2026-08-18T19:04:02.625+09:00  INFO 77940 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.demo.DemoApplicationTests]: DemoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-18T19:04:02.629+09:00  INFO 77940 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.DemoApplicationTests
+2026-08-18T19:04:02.630+09:00  INFO 77940 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.demo.DemoApplicationTests]: DemoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-18T19:04:02.630+09:00  INFO 77940 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.DemoApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -16,16 +16,16 @@
 
  :: Spring Boot ::                (v4.1.0)
 
-2026-08-18T16:23:24.047+09:00  INFO 74720 --- [    Test worker] com.example.demo.DemoApplicationTests    : Starting DemoApplicationTests using Java 17.0.18 with PID 74720 (started by suhyeokyun in /Users/suhyeokyun/IdeaProjects/elixir-codex)
-2026-08-18T16:23:24.047+09:00  INFO 74720 --- [    Test worker] com.example.demo.DemoApplicationTests    : No active profile set, falling back to 1 default profile: "default"
-2026-08-18T16:23:24.123+09:00  INFO 74720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-08-18T16:23:24.135+09:00  INFO 74720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 16 JPA repository interfaces.
-2026-08-18T16:23:24.215+09:00  INFO 74720 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-08-18T16:23:24.223+09:00  INFO 74720 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-08-18T16:23:24.224+09:00  INFO 74720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2026-08-18T16:23:24.224+09:00  INFO 74720 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:elixir_codex user=SA
-2026-08-18T16:23:24.224+09:00  INFO 74720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2026-08-18T16:23:24.224+09:00  INFO 74720 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-08-18T19:04:02.637+09:00  INFO 77940 --- [    Test worker] com.example.demo.DemoApplicationTests    : Starting DemoApplicationTests using Java 17.0.18 with PID 77940 (started by suhyeokyun in /Users/suhyeokyun/IdeaProjects/elixir-codex)
+2026-08-18T19:04:02.638+09:00  INFO 77940 --- [    Test worker] com.example.demo.DemoApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2026-08-18T19:04:02.705+09:00  INFO 77940 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-18T19:04:02.718+09:00  INFO 77940 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 18 JPA repository interfaces.
+2026-08-18T19:04:02.806+09:00  INFO 77940 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-18T19:04:02.813+09:00  INFO 77940 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-18T19:04:02.814+09:00  INFO 77940 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-08-18T19:04:02.814+09:00  INFO 77940 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:elixir_codex user=SA
+2026-08-18T19:04:02.814+09:00  INFO 77940 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-08-18T19:04:02.814+09:00  INFO 77940 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [jdbc:h2:mem:elixir_codex]
 	Database driver: H2 JDBC Driver
 	Database dialect: H2Dialect
@@ -37,7 +37,7 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-08-18T16:23:24.331+09:00  INFO 74720 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-18T19:04:02.927+09:00  INFO 77940 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: drop table if exists art_template cascade 
 Hibernate: drop table if exists attendance_log cascade 
 Hibernate: drop table if exists blacklisted_token cascade 
@@ -55,7 +55,7 @@ Hibernate: drop table if exists room_card_placement cascade
 Hibernate: drop table if exists special_elixir cascade 
 Hibernate: drop table if exists supplement_log cascade 
 Hibernate: drop table if exists user cascade 
-2026-08-18T16:23:24.334+09:00  WARN 74720 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "drop table if exists user cascade " via JDBC [Syntax error in SQL statement "drop table if exists [*]user cascade "; expected "identifier";]
+2026-08-18T19:04:02.930+09:00  WARN 77940 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "drop table if exists user cascade " via JDBC [Syntax error in SQL statement "drop table if exists [*]user cascade "; expected "identifier";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "drop table if exists user cascade " via JDBC [Syntax error in SQL statement "drop table if exists [*]user cascade "; expected "identifier";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
@@ -227,12 +227,14 @@ drop table if exists user cascade  [42001-240]
 
 Hibernate: drop table if exists weekly_quest cascade 
 Hibernate: drop table if exists weekly_quest_template cascade 
+Hibernate: drop table if exists wizard_room_placement cascade 
+Hibernate: drop table if exists wizard_room_settings cascade 
 Hibernate: create table art_template (created_at timestamp(6), id bigint generated by default as identity, image_url varchar(255), grade enum ('COMMON','EPIC','RARE'), theme_category enum ('DIET_BLOODSUGAR','FATIGUE_ENERGY','SKIN_ANTIOXIDANT','SLEEP_REST'), primary key (id))
 Hibernate: create table attendance_log (attended_date date, streak_at_check_in integer not null, created_at timestamp(6), id bigint generated by default as identity, owner_id bigint, primary key (id))
 Hibernate: create table blacklisted_token (expires_at timestamp(6), id bigint generated by default as identity, token varchar(512) unique, primary key (id))
 Hibernate: create table daily_quest (assigned_date date, id bigint generated by default as identity, quest_template_id bigint, user_id bigint, status enum ('COMPLETED','IN_PROGRESS'), primary key (id))
 Hibernate: create table elixir_card_stats (stat_value integer, elixir_card_id bigint not null, stat_name varchar(255) not null, primary key (elixir_card_id, stat_name))
-Hibernate: create table elixir_card (is_mutated boolean not null, created_at timestamp(6), id bigint generated by default as identity, owner_id bigint, serial_number bigint, adviser_comment varchar(255), card_description TEXT, image_url varchar(255), ingredient_summary varchar(255), name varchar(255), scientific_explanation TEXT, grade enum ('COMMON','EPIC','PRISMATIC_LEGENDARY','RARE'), theme_category enum ('DIET_BLOODSUGAR','FATIGUE_ENERGY','SKIN_ANTIOXIDANT','SLEEP_REST'), primary key (id))
+Hibernate: create table elixir_card (is_mutated boolean not null, created_at timestamp(6), id bigint generated by default as identity, owner_id bigint, serial_number bigint, adviser_comment varchar(255), card_description TEXT, image_url MEDIUMTEXT, ingredient_summary varchar(255), name varchar(255), scientific_explanation TEXT, grade enum ('COMMON','EPIC','PRISMATIC_LEGENDARY','RARE'), theme_category enum ('DIET_BLOODSUGAR','FATIGUE_ENERGY','SKIN_ANTIOXIDANT','SLEEP_REST'), primary key (id))
 Hibernate: create table fixed_recipe_bonus_stats (fixed_recipe_id bigint not null, stat_name varchar(255))
 Hibernate: create table fixed_recipe_required_ingredients (fixed_recipe_id bigint not null, ingredient_name varchar(255))
 Hibernate: create table fixed_recipe (bonus_percent integer not null, id bigint generated by default as identity, adviser_comment varchar(255), card_description varchar(255), name varchar(255), scientific_explanation TEXT, grade enum ('COMMON','EPIC','PRISMATIC_LEGENDARY','RARE'), theme_category enum ('DIET_BLOODSUGAR','FATIGUE_ENERGY','SKIN_ANTIOXIDANT','SLEEP_REST'), primary key (id))
@@ -244,7 +246,7 @@ Hibernate: create table room_card_placement (rotation integer not null, x intege
 Hibernate: create table special_elixir (created_at timestamp(6), id bigint generated by default as identity, owner_id bigint, adviser_comment varchar(255), image_url varchar(255), name varchar(255), theme_category enum ('DIET_BLOODSUGAR','FATIGUE_ENERGY','SKIN_ANTIOXIDANT','SLEEP_REST'), primary key (id))
 Hibernate: create table supplement_log (confidence_score integer, consumed_date date, is_affiliate_product boolean not null, is_verified boolean not null, created_at timestamp(6), id bigint generated by default as identity, owner_id bigint, product_name varchar(255), primary key (id))
 Hibernate: create table user (health_data_enabled boolean not null, id bigint generated by default as identity, email varchar(255), password varchar(255), selected_category varchar(255), subscription_status varchar(255), primary key (id))
-2026-08-18T16:23:24.344+09:00  WARN 74720 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (health_data_enabled boolean not null, id bigint generated by default as identity, email varchar(255), password varchar(255), selected_category varchar(255), subscription_status varchar(255), primary key (id))" via JDBC [Syntax error in SQL statement "create table [*]user (health_data_enabled boolean not null, id bigint generated by default as identity, email varchar(255), password varchar(255), selected_category varchar(255), subscription_status varchar(255), primary key (id))"; expected "identifier";]
+2026-08-18T19:04:02.940+09:00  WARN 77940 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (health_data_enabled boolean not null, id bigint generated by default as identity, email varchar(255), password varchar(255), selected_category varchar(255), subscription_status varchar(255), primary key (id))" via JDBC [Syntax error in SQL statement "create table [*]user (health_data_enabled boolean not null, id bigint generated by default as identity, email varchar(255), password varchar(255), selected_category varchar(255), subscription_status varchar(255), primary key (id))"; expected "identifier";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (health_data_enabled boolean not null, id bigint generated by default as identity, email varchar(255), password varchar(255), selected_category varchar(255), subscription_status varchar(255), primary key (id))" via JDBC [Syntax error in SQL statement "create table [*]user (health_data_enabled boolean not null, id bigint generated by default as identity, email varchar(255), password varchar(255), selected_category varchar(255), subscription_status varchar(255), primary key (id))"; expected "identifier";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
@@ -417,9 +419,11 @@ create table user (health_data_enabled boolean not null, id bigint generated by 
 
 Hibernate: create table weekly_quest (week_start_date date, id bigint generated by default as identity, user_id bigint, weekly_quest_template_id bigint, status enum ('COMPLETED','IN_PROGRESS'), primary key (id))
 Hibernate: create table weekly_quest_template (id bigint generated by default as identity, common_reward_material_name varchar(255), description varchar(255), recipe_scroll_name varchar(255), reward_material_name varchar(255), title varchar(255), category enum ('BLOOD_SUGAR_DIET','FATIGUE_ENERGY','SKIN_ANTIOXIDANT','SLEEP_REST'), reward_grade enum ('COMMON','EPIC','RARE'), primary key (id))
+Hibernate: create table wizard_room_placement (rotation integer not null, x integer not null, y integer not null, z_index integer not null, furniture_reward_id bigint, id bigint generated by default as identity, owner_id bigint, primary key (id))
+Hibernate: create table wizard_room_settings (is_public boolean not null, id bigint generated by default as identity, owner_id bigint unique, primary key (id))
 Hibernate: alter table if exists daily_quest add constraint FK5cm0t3y67jx29mxxosqdbdb8t foreign key (quest_template_id) references quest_template
 Hibernate: alter table if exists daily_quest add constraint FKjmqy82ykt0mby62l062wdqk4t foreign key (user_id) references user
-2026-08-18T16:23:24.348+09:00  WARN 74720 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists daily_quest add constraint FKjmqy82ykt0mby62l062wdqk4t foreign key (user_id) references user" via JDBC [Syntax error in SQL statement "alter table if exists daily_quest add constraint FKjmqy82ykt0mby62l062wdqk4t foreign key (user_id) references [*]user"; expected "identifier";]
+2026-08-18T19:04:02.945+09:00  WARN 77940 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists daily_quest add constraint FKjmqy82ykt0mby62l062wdqk4t foreign key (user_id) references user" via JDBC [Syntax error in SQL statement "alter table if exists daily_quest add constraint FKjmqy82ykt0mby62l062wdqk4t foreign key (user_id) references [*]user"; expected "identifier";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists daily_quest add constraint FKjmqy82ykt0mby62l062wdqk4t foreign key (user_id) references user" via JDBC [Syntax error in SQL statement "alter table if exists daily_quest add constraint FKjmqy82ykt0mby62l062wdqk4t foreign key (user_id) references [*]user"; expected "identifier";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
@@ -594,7 +598,7 @@ Hibernate: alter table if exists elixir_card_stats add constraint FKctjtvi6xv2fh
 Hibernate: alter table if exists fixed_recipe_bonus_stats add constraint FKm8jay0lnmk8d6bx1fy5tmvryl foreign key (fixed_recipe_id) references fixed_recipe
 Hibernate: alter table if exists fixed_recipe_required_ingredients add constraint FKmpgwl6mq35ymih47qtnnyqdqc foreign key (fixed_recipe_id) references fixed_recipe
 Hibernate: alter table if exists recipe_scroll add constraint FKeofmfsnksg6w2h4xa07hlfkok foreign key (user_id) references user
-2026-08-18T16:23:24.352+09:00  WARN 74720 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists recipe_scroll add constraint FKeofmfsnksg6w2h4xa07hlfkok foreign key (user_id) references user" via JDBC [Syntax error in SQL statement "alter table if exists recipe_scroll add constraint FKeofmfsnksg6w2h4xa07hlfkok foreign key (user_id) references [*]user"; expected "identifier";]
+2026-08-18T19:04:02.949+09:00  WARN 77940 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists recipe_scroll add constraint FKeofmfsnksg6w2h4xa07hlfkok foreign key (user_id) references user" via JDBC [Syntax error in SQL statement "alter table if exists recipe_scroll add constraint FKeofmfsnksg6w2h4xa07hlfkok foreign key (user_id) references [*]user"; expected "identifier";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists recipe_scroll add constraint FKeofmfsnksg6w2h4xa07hlfkok foreign key (user_id) references user" via JDBC [Syntax error in SQL statement "alter table if exists recipe_scroll add constraint FKeofmfsnksg6w2h4xa07hlfkok foreign key (user_id) references [*]user"; expected "identifier";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
@@ -766,7 +770,7 @@ alter table if exists recipe_scroll add constraint FKeofmfsnksg6w2h4xa07hlfkok f
 	... 142 common frames omitted
 
 Hibernate: alter table if exists weekly_quest add constraint FKd29nfa96xaog2sceg0ru1jv21 foreign key (user_id) references user
-2026-08-18T16:23:24.354+09:00  WARN 74720 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists weekly_quest add constraint FKd29nfa96xaog2sceg0ru1jv21 foreign key (user_id) references user" via JDBC [Syntax error in SQL statement "alter table if exists weekly_quest add constraint FKd29nfa96xaog2sceg0ru1jv21 foreign key (user_id) references [*]user"; expected "identifier";]
+2026-08-18T19:04:02.951+09:00  WARN 77940 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists weekly_quest add constraint FKd29nfa96xaog2sceg0ru1jv21 foreign key (user_id) references user" via JDBC [Syntax error in SQL statement "alter table if exists weekly_quest add constraint FKd29nfa96xaog2sceg0ru1jv21 foreign key (user_id) references [*]user"; expected "identifier";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists weekly_quest add constraint FKd29nfa96xaog2sceg0ru1jv21 foreign key (user_id) references user" via JDBC [Syntax error in SQL statement "alter table if exists weekly_quest add constraint FKd29nfa96xaog2sceg0ru1jv21 foreign key (user_id) references [*]user"; expected "identifier";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
@@ -938,16 +942,37 @@ alter table if exists weekly_quest add constraint FKd29nfa96xaog2sceg0ru1jv21 fo
 	... 142 common frames omitted
 
 Hibernate: alter table if exists weekly_quest add constraint FK72tp1bds24wnn9m6upjsg0vol foreign key (weekly_quest_template_id) references weekly_quest_template
-2026-08-18T16:23:24.356+09:00  INFO 74720 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-08-18T16:23:24.476+09:00  WARN 74720 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-08-18T16:23:24.482+09:00  WARN 74720 --- [    Test worker] .s.a.UserDetailsServiceAutoConfiguration : 
+2026-08-18T19:04:02.953+09:00  INFO 77940 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-18T19:04:03.080+09:00  WARN 77940 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-18T19:04:03.085+09:00  WARN 77940 --- [    Test worker] .s.a.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 61e8fdba-9027-471b-bfa3-8e04fe932058
+Using generated security password: 95749abe-77d0-445b-a116-cd93ff6446c6
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-08-18T16:23:24.485+09:00  INFO 74720 --- [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-08-18T16:23:24.578+09:00  INFO 74720 --- [    Test worker] com.example.demo.DemoApplicationTests    : Started DemoApplicationTests in 0.539 seconds (process running for 3.825)
+2026-08-18T19:04:03.089+09:00  INFO 77940 --- [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-18T19:04:03.193+09:00  INFO 77940 --- [    Test worker] com.example.demo.DemoApplicationTests    : Started DemoApplicationTests in 0.562 seconds (process running for 3.806)
+Hibernate: select count(*) from weekly_quest_template wqt1_0
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select count(*) from ingredient_card ic1_0
+Hibernate: insert into ingredient_card (created_at,grade,name,owner_id,quantity,source_quest_title,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into ingredient_card (created_at,grade,name,owner_id,quantity,source_quest_title,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into ingredient_card (created_at,grade,name,owner_id,quantity,source_quest_title,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into supplement_log (confidence_score,consumed_date,created_at,is_affiliate_product,is_verified,owner_id,product_name,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into supplement_log (confidence_score,consumed_date,created_at,is_affiliate_product,is_verified,owner_id,product_name,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into supplement_log (confidence_score,consumed_date,created_at,is_affiliate_product,is_verified,owner_id,product_name,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into supplement_log (confidence_score,consumed_date,created_at,is_affiliate_product,is_verified,owner_id,product_name,id) values (?,?,?,?,?,?,?,default)
 Hibernate: select count(*) from art_template at1_0
 Hibernate: insert into art_template (created_at,grade,image_url,theme_category,id) values (?,?,?,?,default)
 Hibernate: insert into art_template (created_at,grade,image_url,theme_category,id) values (?,?,?,?,default)
@@ -965,6 +990,17 @@ Hibernate: insert into attendance_log (attended_date,created_at,owner_id,streak_
 Hibernate: insert into attendance_log (attended_date,created_at,owner_id,streak_at_check_in,id) values (?,?,?,?,default)
 Hibernate: insert into attendance_log (attended_date,created_at,owner_id,streak_at_check_in,id) values (?,?,?,?,default)
 Hibernate: insert into attendance_log (attended_date,created_at,owner_id,streak_at_check_in,id) values (?,?,?,?,default)
+Hibernate: select count(*) from quest_template qt1_0
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
+Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
 Hibernate: select count(*) from fixed_recipe fr1_0
 Hibernate: insert into fixed_recipe (adviser_comment,bonus_percent,card_description,grade,name,scientific_explanation,theme_category,id) values (?,?,?,?,?,?,?,default)
 Hibernate: insert into fixed_recipe (adviser_comment,bonus_percent,card_description,grade,name,scientific_explanation,theme_category,id) values (?,?,?,?,?,?,?,default)
@@ -998,38 +1034,6 @@ Hibernate: insert into fixed_recipe_required_ingredients (fixed_recipe_id,ingred
 Hibernate: insert into fixed_recipe_required_ingredients (fixed_recipe_id,ingredient_name) values (?,?)
 Hibernate: insert into fixed_recipe_required_ingredients (fixed_recipe_id,ingredient_name) values (?,?)
 Hibernate: insert into fixed_recipe_required_ingredients (fixed_recipe_id,ingredient_name) values (?,?)
-Hibernate: select count(*) from quest_template qt1_0
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: insert into quest_template (data_source,description,reward_material_name,target_value,title,id) values (?,?,?,?,?,default)
-Hibernate: select count(*) from weekly_quest_template wqt1_0
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into weekly_quest_template (category,common_reward_material_name,description,recipe_scroll_name,reward_grade,reward_material_name,title,id) values (?,?,?,?,?,?,?,default)
-Hibernate: select count(*) from ingredient_card ic1_0
-Hibernate: insert into ingredient_card (created_at,grade,name,owner_id,quantity,source_quest_title,id) values (?,?,?,?,?,?,default)
-Hibernate: insert into ingredient_card (created_at,grade,name,owner_id,quantity,source_quest_title,id) values (?,?,?,?,?,?,default)
-Hibernate: insert into ingredient_card (created_at,grade,name,owner_id,quantity,source_quest_title,id) values (?,?,?,?,?,?,default)
-Hibernate: insert into supplement_log (confidence_score,consumed_date,created_at,is_affiliate_product,is_verified,owner_id,product_name,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into supplement_log (confidence_score,consumed_date,created_at,is_affiliate_product,is_verified,owner_id,product_name,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into supplement_log (confidence_score,consumed_date,created_at,is_affiliate_product,is_verified,owner_id,product_name,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into supplement_log (confidence_score,consumed_date,created_at,is_affiliate_product,is_verified,owner_id,product_name,id) values (?,?,?,?,?,?,?,default)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

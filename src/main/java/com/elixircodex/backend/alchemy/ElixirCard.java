@@ -41,6 +41,7 @@ public class ElixirCard {
     @Enumerated(EnumType.STRING)
     private ThemeCategory themeCategory;
 
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String imageUrl;
 
     private String adviserComment;

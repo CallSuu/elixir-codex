@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.alchemy.ArtMatchingServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:21.758Z" hostname="Suui-MacBookPro.local" time="0.05">
+<testsuite name="com.elixircodex.backend.alchemy.ArtMatchingServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:00.322Z" hostname="Suui-MacBookPro.local" time="0.052">
   <properties/>
-  <testcase name="템플릿이_여러개면_그중_하나를_반환한다()" classname="com.elixircodex.backend.alchemy.ArtMatchingServiceTest" time="0.048"/>
-  <testcase name="템플릿이_없으면_기본_이미지를_반환한다()" classname="com.elixircodex.backend.alchemy.ArtMatchingServiceTest" time="0.0"/>
+  <testcase name="템플릿이_여러개면_그중_하나를_반환한다()" classname="com.elixircodex.backend.alchemy.ArtMatchingServiceTest" time="0.05"/>
+  <testcase name="템플릿이_없으면_기본_이미지를_반환한다()" classname="com.elixircodex.backend.alchemy.ArtMatchingServiceTest" time="0.001"/>
   <testcase name="템플릿이_하나면_그대로_반환한다()" classname="com.elixircodex.backend.alchemy.ArtMatchingServiceTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

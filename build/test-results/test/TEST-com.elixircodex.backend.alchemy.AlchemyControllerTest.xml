@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.alchemy.AlchemyControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:21.529Z" hostname="Suui-MacBookPro.local" time="0.017">
+<testsuite name="com.elixircodex.backend.alchemy.AlchemyControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:00.090Z" hostname="Suui-MacBookPro.local" time="0.018">
   <properties/>
-  <testcase name="재료가_1개면_GPT를_호출하지_않고_400을_반환한다()" classname="com.elixircodex.backend.alchemy.AlchemyControllerTest" time="0.015"/>
+  <testcase name="재료가_1개면_GPT를_호출하지_않고_400을_반환한다()" classname="com.elixircodex.backend.alchemy.AlchemyControllerTest" time="0.016"/>
   <testcase name="재료가_null이면_GPT를_호출하지_않고_400을_반환한다()" classname="com.elixircodex.backend.alchemy.AlchemyControllerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

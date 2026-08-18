@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.elixircodex.backend.wizardroom.WizardRoomServiceTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:02.586Z" hostname="Suui-MacBookPro.local" time="0.038">
+  <properties/>
+  <testcase name="설정_자체가_없으면_공개되지_않은_방_예외를_던진다()" classname="com.elixircodex.backend.wizardroom.WizardRoomServiceTest" time="0.034"/>
+  <testcase name="공개된_방은_요청자와_무관하게_배치_목록을_반환한다()" classname="com.elixircodex.backend.wizardroom.WizardRoomServiceTest" time="0.001"/>
+  <testcase name="본인_소유가_아닌_가구를_배치하려하면_예외를_던지고_저장하지_않는다()" classname="com.elixircodex.backend.wizardroom.WizardRoomServiceTest" time="0.001"/>
+  <testcase name="isPublic이_false면_공개되지_않은_방_예외를_던진다()" classname="com.elixircodex.backend.wizardroom.WizardRoomServiceTest" time="0.0"/>
+  <testcase name="존재하지_않는_가구를_배치하려하면_예외를_던진다()" classname="com.elixircodex.backend.wizardroom.WizardRoomServiceTest" time="0.001"/>
+  <testcase name="공개설정이_이미_있으면_id를_유지한채_갱신한다()" classname="com.elixircodex.backend.wizardroom.WizardRoomServiceTest" time="0.0"/>
+  <testcase name="공개설정이_처음이면_새로_생성해서_저장한다()" classname="com.elixircodex.backend.wizardroom.WizardRoomServiceTest" time="0.0"/>
+  <testcase name="본인이_받은_가구면_정상적으로_배치가_저장된다()" classname="com.elixircodex.backend.wizardroom.WizardRoomServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

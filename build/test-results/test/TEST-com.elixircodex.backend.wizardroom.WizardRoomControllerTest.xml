@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.elixircodex.backend.wizardroom.WizardRoomControllerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:02.584Z" hostname="Suui-MacBookPro.local" time="0.001">
+  <properties/>
+  <testcase name="내_방_조회는_서비스_결과를_그대로_반환한다()" classname="com.elixircodex.backend.wizardroom.WizardRoomControllerTest" time="0.0"/>
+  <testcase name="공개설정_갱신_요청은_서비스로_그대로_위임된다()" classname="com.elixircodex.backend.wizardroom.WizardRoomControllerTest" time="0.001"/>
+  <testcase name="타인_공개방_조회는_서비스_결과를_그대로_반환한다()" classname="com.elixircodex.backend.wizardroom.WizardRoomControllerTest" time="0.0"/>
+  <testcase name="배치_갱신_요청은_서비스로_그대로_위임된다()" classname="com.elixircodex.backend.wizardroom.WizardRoomControllerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:21.748Z" hostname="Suui-MacBookPro.local" time="0.009">
+<testsuite name="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-08-18T10:04:00.309Z" hostname="Suui-MacBookPro.local" time="0.012">
   <properties/>
-  <testcase name="응답_형식이_예상과_다르면_전용_예외를_던진다()" classname="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" time="0.001"/>
-  <testcase name="HTTP_오류_응답이면_상태코드와_응답본문이_예외_메시지에_포함된다()" classname="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" time="0.003"/>
-  <testcase name="정상_응답을_파싱해서_이미지URL을_반환한다()" classname="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" time="0.001"/>
+  <testcase name="응답_형식이_예상과_다르면_전용_예외를_던진다()" classname="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" time="0.003"/>
+  <testcase name="HTTP_오류_응답이면_상태코드와_응답본문이_예외_메시지에_포함된다()" classname="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" time="0.004"/>
   <testcase name="API_호출이_실패하면_전용_예외에_원인_메시지가_포함된다()" classname="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" time="0.001"/>
   <testcase name="타임아웃이_발생하면_전용_예외에_원인_메시지가_포함된다()" classname="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" time="0.001"/>
+  <testcase name="정상_응답을_파싱해서_데이터URI를_반환한다()" classname="com.elixircodex.backend.alchemy.ArtGenerationServiceTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
