@@ -67,7 +67,8 @@ class SynthesizeControllerTest {
     @Test
     void 정상_요청이면_결과를_그대로_반환한다() {
         Map<String, Integer> stats = Map.of("피부 투명도", 72, "항산화 방어", 65, "스트레스 차단", 80);
-        SynthesizeResponse expected = new SynthesizeResponse(1L, "심해의 정화 오일", ElixirGrade.EPIC, "url", "조언", null, stats);
+        SynthesizeResponse expected = new SynthesizeResponse(1L, "심해의 정화 오일", ElixirGrade.EPIC, "url", "조언", null,
+                stats, null, null);
         when(synthesizeService.synthesize(1L, request())).thenReturn(expected);
 
         ResponseEntity<?> response = controller.synthesize(request());

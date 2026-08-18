@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.IntSupplier;
@@ -23,6 +24,7 @@ import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -32,6 +34,8 @@ class SynthesizeServiceTest {
     private StackService stackService;
     @Mock
     private ElixirCardRepository elixirCardRepository;
+    @Mock
+    private FixedRecipeRepository fixedRecipeRepository;
     @Mock
     private AlchemyNameService alchemyNameService;
     @Mock
@@ -51,13 +55,13 @@ class SynthesizeServiceTest {
     // 아트 생성 자체는 이 테스트들의 관심사가 아니므로 기본적으로 비활성화해
     // 기존 등급/스탯 로직 검증에는 영향이 없도록 한다. 아트 생성/폴백 자체는 별도 테스트에서 검증한다.
     private SynthesizeService service() {
-        return new SynthesizeService(stackService, elixirCardRepository, alchemyNameService, artMatchingService,
-                artGenerationService, statRollService, false, percentRoll, mutationRoll);
+        return new SynthesizeService(stackService, elixirCardRepository, fixedRecipeRepository, alchemyNameService,
+                artMatchingService, artGenerationService, statRollService, false, percentRoll, mutationRoll);
     }
 
     private SynthesizeService serviceWithArtGeneration() {
-        return new SynthesizeService(stackService, elixirCardRepository, alchemyNameService, artMatchingService,
-                artGenerationService, statRollService, true, percentRoll, mutationRoll);
+        return new SynthesizeService(stackService, elixirCardRepository, fixedRecipeRepository, alchemyNameService,
+                artMatchingService, artGenerationService, statRollService, true, percentRoll, mutationRoll);
     }
 
     private void givenNoPriorSynthesisToday() {
@@ -397,5 +401,207 @@ class SynthesizeServiceTest {
         service().synthesize(1L, request);
 
         verify(artMatchingService).findImageUrl(Grade.COMMON, ThemeCategory.SKIN_ANTIOXIDANT);
+    }
+
+    private FixedRecipe fixedRecipe(String name, ThemeCategory theme, List<String> ingredients,
+                                     List<String> bonusStats, int bonusPercent) {
+        return FixedRecipe.builder()
+                .id(1L).name(name).themeCategory(theme).grade(ElixirGrade.EPIC)
+                .requiredIngredientNames(ingredients).bonusStatNames(bonusStats).bonusPercent(bonusPercent)
+                .cardDescription("카드 설명").adviserComment("늘해랑 조언").scientificExplanation("과학적 설명")
+                .build();
+    }
+
+    // 고정 레시피 매칭 테스트 전용: 매칭되면 mutationRoll/percentRoll이 전혀 호출되지 않아야 하므로,
+    // givenNoPriorSynthesisToday()의 mutationRoll 기본 스텁까지 걸면 UnnecessaryStubbingException이 난다.
+    private void givenNoPriorSynthesisTodayOnly() {
+        when(elixirCardRepository.countByOwnerIdAndCreatedAtBetween(eq(1L), any(LocalDateTime.class), any(LocalDateTime.class)))
+                .thenReturn(0L);
+    }
+
+    private List<IngredientCard> ingredientCards(List<String> names) {
+        return names.stream()
+                .map(name -> IngredientCard.builder().id((long) name.hashCode()).name(name).grade(Grade.COMMON).build())
+                .toList();
+    }
+
+    @Test
+    void 레시피1_재료가_정확히_일치하면_탱글한_백옥_엘릭서로_고정되고_절차형_판정을_건너뛴다() {
+        FixedRecipe recipe = fixedRecipe("탱글한 백옥 엘릭서", ThemeCategory.SKIN_ANTIOXIDANT,
+                List.of("황금 레몬", "탱탱 젤리", "백옥 진주"), List.of("피부 투명도", "장벽 결속력"), 20);
+        when(fixedRecipeRepository.findAll()).thenReturn(List.of(recipe));
+        when(elixirCardRepository.countByOwnerIdAndCreatedAtBetween(eq(1L), any(LocalDateTime.class), any(LocalDateTime.class)))
+                .thenReturn(0L);
+        List<IngredientCard> ingredients = ingredientCards(List.of("황금 레몬", "탱탱 젤리", "백옥 진주"));
+        // totalScore=15는 절차형 로직이었다면 프리즈마틱 판정 대상(>=10)이고, percentRoll 기본값(0)은 그 판정을 성공시킨다.
+        // 그런데도 최종 등급이 recipe.grade(EPIC) 그대로 나온다면 프리즈마틱/업그레이드 판정 자체가 통째로 스킵된 것이다.
+        when(stackService.evaluate(eq(1L), any(StackRequest.class)))
+                .thenReturn(new StackEvaluation(ingredients, 15, false, List.of()));
+        Map<String, Integer> rolledStats = new LinkedHashMap<>(Map.of(
+                "피부 투명도", 50, "항산화 방어", 40, "장벽 결속력", 45, "수분 보습도", 60));
+        when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.SKIN_ANTIOXIDANT)).thenReturn(rolledStats);
+        givenArtMatchReturns("url");
+
+        SynthesizeResponse response = service().synthesize(1L,
+                new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.FATIGUE_ENERGY));
+
+        assertThat(response.name()).isEqualTo("탱글한 백옥 엘릭서");
+        assertThat(response.grade()).isEqualTo(ElixirGrade.EPIC);
+        assertThat(response.serialNumber()).isNull();
+        assertThat(response.adviserComment()).isEqualTo("늘해랑 조언");
+        assertThat(response.cardDescription()).isEqualTo("카드 설명");
+        assertThat(response.scientificExplanation()).isEqualTo("과학적 설명");
+        assertThat(response.stats().get("피부 투명도")).isEqualTo(60); // 50 * 1.2
+        assertThat(response.stats().get("장벽 결속력")).isEqualTo(54); // 45 * 1.2
+        assertThat(response.stats().get("항산화 방어")).isEqualTo(40); // 보너스 대상 아님, 그대로
+        verifyNoInteractions(alchemyNameService);
+        verify(artMatchingService).findImageUrl(Grade.EPIC, ThemeCategory.SKIN_ANTIOXIDANT);
+    }
+
+    @Test
+    void 레시피2_재료가_정확히_일치하면_불타는_태양_엘릭서로_고정된다() {
+        FixedRecipe recipe = fixedRecipe("불타는 태양 엘릭서", ThemeCategory.FATIGUE_ENERGY,
+                List.of("활력초", "심장 태엽", "마룡 뿔"), List.of("활력 마나량", "신속 순환력"), 25);
+        when(fixedRecipeRepository.findAll()).thenReturn(List.of(recipe));
+        givenNoPriorSynthesisTodayOnly();
+        List<IngredientCard> ingredients = ingredientCards(List.of("활력초", "심장 태엽", "마룡 뿔"));
+        when(stackService.evaluate(eq(1L), any(StackRequest.class)))
+                .thenReturn(new StackEvaluation(ingredients, 5, false, List.of()));
+        when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.FATIGUE_ENERGY))
+                .thenReturn(new LinkedHashMap<>(Map.of("활력 마나량", 60, "신속 순환력", 50, "심장 박동력", 40, "피로 무력화", 45)));
+        givenArtMatchReturns("url");
+
+        SynthesizeResponse response = service().synthesize(1L,
+                new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.SLEEP_REST));
+
+        assertThat(response.name()).isEqualTo("불타는 태양 엘릭서");
+        assertThat(response.grade()).isEqualTo(ElixirGrade.EPIC);
+    }
+
+    @Test
+    void 레시피3_재료가_정확히_일치하면_가뿐한_칠흑_엘릭서로_고정된다() {
+        FixedRecipe recipe = fixedRecipe("가뿐한 칠흑 엘릭서", ThemeCategory.DIET_BLOODSUGAR,
+                List.of("홀쭉 열매", "녹차잎", "바나바잎"), List.of("당독소 봉인", "지방 연소열"), 20);
+        when(fixedRecipeRepository.findAll()).thenReturn(List.of(recipe));
+        givenNoPriorSynthesisTodayOnly();
+        List<IngredientCard> ingredients = ingredientCards(List.of("홀쭉 열매", "녹차잎", "바나바잎"));
+        when(stackService.evaluate(eq(1L), any(StackRequest.class)))
+                .thenReturn(new StackEvaluation(ingredients, 5, false, List.of()));
+        when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.DIET_BLOODSUGAR))
+                .thenReturn(new LinkedHashMap<>(Map.of("당독소 봉인", 60, "지방 연소열", 50, "포만 유지력", 40, "흡수 차단력", 45)));
+        givenArtMatchReturns("url");
+
+        SynthesizeResponse response = service().synthesize(1L,
+                new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.SKIN_ANTIOXIDANT));
+
+        assertThat(response.name()).isEqualTo("가뿐한 칠흑 엘릭서");
+        assertThat(response.grade()).isEqualTo(ElixirGrade.EPIC);
+    }
+
+    @Test
+    void 레시피4_재료가_정확히_일치하면_은은한_달빛_엘릭서로_고정된다() {
+        FixedRecipe recipe = fixedRecipe("은은한 달빛 엘릭서", ThemeCategory.SLEEP_REST,
+                List.of("안정석", "평온초", "해독 엉겅퀴"), List.of("스트레스 차단", "심연 수면도"), 25);
+        when(fixedRecipeRepository.findAll()).thenReturn(List.of(recipe));
+        givenNoPriorSynthesisTodayOnly();
+        List<IngredientCard> ingredients = ingredientCards(List.of("안정석", "평온초", "해독 엉겅퀴"));
+        when(stackService.evaluate(eq(1L), any(StackRequest.class)))
+                .thenReturn(new StackEvaluation(ingredients, 5, false, List.of()));
+        when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.SLEEP_REST))
+                .thenReturn(new LinkedHashMap<>(Map.of("스트레스 차단", 60, "심연 수면도", 50, "근육 이완도", 40, "독소 정화력", 45)));
+        givenArtMatchReturns("url");
+
+        SynthesizeResponse response = service().synthesize(1L,
+                new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.DIET_BLOODSUGAR));
+
+        assertThat(response.name()).isEqualTo("은은한 달빛 엘릭서");
+        assertThat(response.grade()).isEqualTo(ElixirGrade.EPIC);
+    }
+
+    @Test
+    void 레시피5_재료4개가_정확히_일치하면_온전한_조화_엘릭서로_고정된다() {
+        FixedRecipe recipe = fixedRecipe("온전한 조화 엘릭서", ThemeCategory.FATIGUE_ENERGY,
+                List.of("황금 레몬", "심해 오일", "안정석", "황금 포자"),
+                List.of("활력 마나량", "항산화 방어", "스트레스 차단"), 25);
+        when(fixedRecipeRepository.findAll()).thenReturn(List.of(recipe));
+        givenNoPriorSynthesisTodayOnly();
+        List<IngredientCard> ingredients = ingredientCards(List.of("황금 레몬", "심해 오일", "안정석", "황금 포자"));
+        when(stackService.evaluate(eq(1L), any(StackRequest.class)))
+                .thenReturn(new StackEvaluation(ingredients, 7, false, List.of()));
+        when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.FATIGUE_ENERGY))
+                .thenReturn(new LinkedHashMap<>(Map.of("활력 마나량", 60, "신속 순환력", 50, "심장 박동력", 40, "피로 무력화", 45)));
+        givenArtMatchReturns("url");
+
+        SynthesizeResponse response = service().synthesize(1L,
+                new SynthesizeRequest(List.of(1L, 2L, 3L, 4L), ThemeCategory.SKIN_ANTIOXIDANT));
+
+        assertThat(response.name()).isEqualTo("온전한 조화 엘릭서");
+        assertThat(response.grade()).isEqualTo(ElixirGrade.EPIC);
+        // 보너스 스탯명 중 "항산화 방어"/"스트레스 차단"은 FATIGUE_ENERGY 스탯 목록에 없어 조용히 무시되고,
+        // 목록에 있는 "활력 마나량"만 실제로 보너스가 적용된다.
+        assertThat(response.stats().get("활력 마나량")).isEqualTo(75); // 60 * 1.25
+    }
+
+    @Test
+    void 필요재료보다_하나_많으면_매칭되지_않고_절차형_로직으로_진행된다() {
+        FixedRecipe recipe = fixedRecipe("탱글한 백옥 엘릭서", ThemeCategory.SKIN_ANTIOXIDANT,
+                List.of("황금 레몬", "탱탱 젤리", "백옥 진주"), List.of("피부 투명도"), 20);
+        when(fixedRecipeRepository.findAll()).thenReturn(List.of(recipe));
+        givenNoPriorSynthesisToday();
+        List<IngredientCard> ingredients = ingredientCards(List.of("황금 레몬", "탱탱 젤리", "백옥 진주", "이슬 한 방울"));
+        when(stackService.evaluate(eq(1L), any(StackRequest.class)))
+                .thenReturn(new StackEvaluation(ingredients, 4, false, List.of()));
+        givenNameGenerationSucceeds();
+        givenArtMatchReturns("url");
+        when(percentRoll.getAsInt()).thenReturn(50);
+
+        SynthesizeResponse response = service().synthesize(1L,
+                new SynthesizeRequest(List.of(1L, 2L, 3L, 4L), ThemeCategory.SKIN_ANTIOXIDANT));
+
+        assertThat(response.name()).isEqualTo("심해의 정화 오일");
+        assertThat(response.scientificExplanation()).isNull();
+        assertThat(response.cardDescription()).isNull();
+    }
+
+    @Test
+    void 필요재료보다_하나_적으면_매칭되지_않고_절차형_로직으로_진행된다() {
+        FixedRecipe recipe = fixedRecipe("탱글한 백옥 엘릭서", ThemeCategory.SKIN_ANTIOXIDANT,
+                List.of("황금 레몬", "탱탱 젤리", "백옥 진주"), List.of("피부 투명도"), 20);
+        when(fixedRecipeRepository.findAll()).thenReturn(List.of(recipe));
+        givenNoPriorSynthesisToday();
+        List<IngredientCard> ingredients = ingredientCards(List.of("황금 레몬", "탱탱 젤리"));
+        when(stackService.evaluate(eq(1L), any(StackRequest.class)))
+                .thenReturn(new StackEvaluation(ingredients, 2, false, List.of()));
+        givenNameGenerationSucceeds();
+        givenArtMatchReturns("url");
+        when(percentRoll.getAsInt()).thenReturn(50);
+
+        SynthesizeResponse response = service().synthesize(1L,
+                new SynthesizeRequest(List.of(1L, 2L), ThemeCategory.SKIN_ANTIOXIDANT));
+
+        assertThat(response.name()).isEqualTo("심해의 정화 오일");
+        assertThat(response.scientificExplanation()).isNull();
+        assertThat(response.cardDescription()).isNull();
+    }
+
+    @Test
+    void 보너스_적용후_스탯값이_100을_넘으면_100으로_고정된다() {
+        FixedRecipe recipe = fixedRecipe("탱글한 백옥 엘릭서", ThemeCategory.SKIN_ANTIOXIDANT,
+                List.of("황금 레몬", "탱탱 젤리", "백옥 진주"), List.of("피부 투명도"), 25);
+        when(fixedRecipeRepository.findAll()).thenReturn(List.of(recipe));
+        givenNoPriorSynthesisTodayOnly();
+        List<IngredientCard> ingredients = ingredientCards(List.of("황금 레몬", "탱탱 젤리", "백옥 진주"));
+        when(stackService.evaluate(eq(1L), any(StackRequest.class)))
+                .thenReturn(new StackEvaluation(ingredients, 5, false, List.of()));
+        when(statRollService.rollStats(ElixirGrade.EPIC, ThemeCategory.SKIN_ANTIOXIDANT))
+                .thenReturn(new LinkedHashMap<>(Map.of(
+                        "피부 투명도", 90, "항산화 방어", 40, "장벽 결속력", 45, "수분 보습도", 60)));
+        givenArtMatchReturns("url");
+
+        SynthesizeResponse response = service().synthesize(1L,
+                new SynthesizeRequest(List.of(1L, 2L, 3L), ThemeCategory.SKIN_ANTIOXIDANT));
+
+        // 90 * 1.25 = 112.5 -> 100으로 캡핑
+        assertThat(response.stats().get("피부 투명도")).isEqualTo(100);
     }
 }

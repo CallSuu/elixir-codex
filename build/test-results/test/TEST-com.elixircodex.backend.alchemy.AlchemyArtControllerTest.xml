@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.alchemy.AlchemyArtControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-08-15T15:39:07.886Z" hostname="Suui-MacBookPro.local" time="0.358">
+<testsuite name="com.elixircodex.backend.alchemy.AlchemyArtControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:21.125Z" hostname="Suui-MacBookPro.local" time="0.402">
   <properties/>
-  <testcase name="유효한_등급과_테마면_이미지URL을_반환한다()" classname="com.elixircodex.backend.alchemy.AlchemyArtControllerTest" time="0.355"/>
+  <testcase name="유효한_등급과_테마면_이미지URL을_반환한다()" classname="com.elixircodex.backend.alchemy.AlchemyArtControllerTest" time="0.397"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

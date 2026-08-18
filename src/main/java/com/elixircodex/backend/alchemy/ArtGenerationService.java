@@ -22,7 +22,7 @@ import tools.jackson.databind.ObjectMapper;
 public class ArtGenerationService {
 
     private static final String API_URL = "https://api.openai.com/v1/images/generations";
-    private static final String MODEL = "gpt-image-1";
+    private static final String MODEL = "dall-e-3";
     private static final String STYLE_SEED =
             "Dark fantasy gothic alchemist style, vintage elixir bottle, high detail illustration";
 
@@ -93,6 +93,8 @@ public class ArtGenerationService {
 
     private String parse(String responseBody) {
         try {
+            // dall-e-3는 response_format 기본값이 "url"이라 data[0].url로 바로 꺼낼 수 있다
+            // (gpt-image-1은 항상 b64_json만 반환해 이 파싱으로는 호환되지 않았음).
             JsonNode url = objectMapper.readTree(responseBody).path("data").path(0).path("url");
             if (url.isMissingNode() || url.asString().isBlank()) {
                 throw new ArtGenerationException("실시간 아트 생성 응답이 비어 있습니다");

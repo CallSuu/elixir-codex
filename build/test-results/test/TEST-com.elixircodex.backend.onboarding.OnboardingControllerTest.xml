@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.onboarding.OnboardingControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-15T15:39:09.443Z" hostname="Suui-MacBookPro.local" time="0.001">
+<testsuite name="com.elixircodex.backend.onboarding.OnboardingControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:22.879Z" hostname="Suui-MacBookPro.local" time="0.001">
   <properties/>
   <testcase name="존재하지_않는_유저면_예외가_그대로_전파된다()" classname="com.elixircodex.backend.onboarding.OnboardingControllerTest" time="0.0"/>
   <testcase name="정상_요청이면_결과를_그대로_반환한다()" classname="com.elixircodex.backend.onboarding.OnboardingControllerTest" time="0.001"/>

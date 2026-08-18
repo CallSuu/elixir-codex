@@ -15,6 +15,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.IntSupplier;
 
@@ -30,6 +32,7 @@ public class SynthesizeService {
 
     private final StackService stackService;
     private final ElixirCardRepository elixirCardRepository;
+    private final FixedRecipeRepository fixedRecipeRepository;
     private final AlchemyNameService alchemyNameService;
     private final ArtMatchingService artMatchingService;
     private final ArtGenerationService artGenerationService;
@@ -40,20 +43,23 @@ public class SynthesizeService {
 
     @Autowired
     public SynthesizeService(StackService stackService, ElixirCardRepository elixirCardRepository,
-                              AlchemyNameService alchemyNameService, ArtMatchingService artMatchingService,
-                              ArtGenerationService artGenerationService, StatRollService statRollService,
+                              FixedRecipeRepository fixedRecipeRepository, AlchemyNameService alchemyNameService,
+                              ArtMatchingService artMatchingService, ArtGenerationService artGenerationService,
+                              StatRollService statRollService,
                               @Value("${elixir.art.generation-enabled}") boolean artGenerationEnabled) {
-        this(stackService, elixirCardRepository, alchemyNameService, artMatchingService, artGenerationService,
-                statRollService, artGenerationEnabled, () -> ThreadLocalRandom.current().nextInt(100),
-                () -> ThreadLocalRandom.current().nextInt(100));
+        this(stackService, elixirCardRepository, fixedRecipeRepository, alchemyNameService, artMatchingService,
+                artGenerationService, statRollService, artGenerationEnabled,
+                () -> ThreadLocalRandom.current().nextInt(100), () -> ThreadLocalRandom.current().nextInt(100));
     }
 
     SynthesizeService(StackService stackService, ElixirCardRepository elixirCardRepository,
-                       AlchemyNameService alchemyNameService, ArtMatchingService artMatchingService,
-                       ArtGenerationService artGenerationService, StatRollService statRollService,
-                       boolean artGenerationEnabled, IntSupplier percentRoll, IntSupplier mutationRoll) {
+                       FixedRecipeRepository fixedRecipeRepository, AlchemyNameService alchemyNameService,
+                       ArtMatchingService artMatchingService, ArtGenerationService artGenerationService,
+                       StatRollService statRollService, boolean artGenerationEnabled, IntSupplier percentRoll,
+                       IntSupplier mutationRoll) {
         this.stackService = stackService;
         this.elixirCardRepository = elixirCardRepository;
+        this.fixedRecipeRepository = fixedRecipeRepository;
         this.alchemyNameService = alchemyNameService;
         this.artMatchingService = artMatchingService;
         this.artGenerationService = artGenerationService;
@@ -68,6 +74,57 @@ public class SynthesizeService {
 
         ensureNotAlreadySynthesizedToday(ownerId);
 
+        List<String> ingredientNames = evaluation.ingredientCards().stream().map(IngredientCard::getName).toList();
+        Optional<FixedRecipe> matchedRecipe = findMatchingRecipe(ingredientNames);
+
+        ElixirCard card = matchedRecipe
+                .map(recipe -> buildFixedRecipeCard(ownerId, recipe, ingredientNames))
+                .orElseGet(() -> buildProceduralCard(ownerId, request, evaluation, ingredientNames));
+        elixirCardRepository.save(card);
+
+        return new SynthesizeResponse(card.getId(), card.getName(), card.getGrade(), card.getImageUrl(),
+                card.getAdviserComment(), card.getSerialNumber(), card.getStats(),
+                card.getScientificExplanation(), card.getCardDescription());
+    }
+
+    private Optional<FixedRecipe> findMatchingRecipe(List<String> ingredientNames) {
+        Set<String> ingredientNameSet = Set.copyOf(ingredientNames);
+        return fixedRecipeRepository.findAll().stream()
+                .filter(recipe -> recipe.getRequiredIngredientNames().size() == ingredientNames.size())
+                .filter(recipe -> Set.copyOf(recipe.getRequiredIngredientNames()).equals(ingredientNameSet))
+                .findFirst();
+    }
+
+    private ElixirCard buildFixedRecipeCard(Long ownerId, FixedRecipe recipe, List<String> ingredientNames) {
+        Map<String, Integer> stats = rollBonusedStats(recipe);
+        String imageUrl = resolveImageUrl(toArtGrade(recipe.getGrade()), recipe.getThemeCategory(), recipe.getName());
+
+        return ElixirCard.builder()
+                .ownerId(ownerId)
+                .name(recipe.getName())
+                .grade(recipe.getGrade())
+                .themeCategory(recipe.getThemeCategory())
+                .imageUrl(imageUrl)
+                .adviserComment(recipe.getAdviserComment())
+                .ingredientSummary(String.join(", ", ingredientNames))
+                .stats(stats)
+                .scientificExplanation(recipe.getScientificExplanation())
+                .cardDescription(recipe.getCardDescription())
+                .build();
+    }
+
+    private Map<String, Integer> rollBonusedStats(FixedRecipe recipe) {
+        Map<String, Integer> stats = statRollService.rollStats(recipe.getGrade(), recipe.getThemeCategory());
+        double multiplier = 1 + recipe.getBonusPercent() / 100.0;
+        for (String bonusStatName : recipe.getBonusStatNames()) {
+            stats.computeIfPresent(bonusStatName,
+                    (name, value) -> Math.min(100, (int) Math.round(value * multiplier)));
+        }
+        return stats;
+    }
+
+    private ElixirCard buildProceduralCard(Long ownerId, SynthesizeRequest request, StackEvaluation evaluation,
+                                            List<String> ingredientNames) {
         int totalScore = evaluation.totalScore();
         ElixirGrade baseGrade = resolveBaseGrade(totalScore);
 
@@ -89,13 +146,12 @@ public class SynthesizeService {
 
         Map<String, Integer> stats = statRollService.rollStats(statGrade, request.themeCategory());
 
-        List<String> ingredientNames = evaluation.ingredientCards().stream().map(IngredientCard::getName).toList();
         NameGenerationResponse nameResponse =
                 alchemyNameService.generateName(request.themeCategory(), ingredientNames, isMutated);
 
         String imageUrl = resolveImageUrl(toArtGrade(finalGrade), request.themeCategory(), nameResponse.name());
 
-        ElixirCard card = ElixirCard.builder()
+        return ElixirCard.builder()
                 .ownerId(ownerId)
                 .name(nameResponse.name())
                 .grade(finalGrade)
@@ -107,10 +163,6 @@ public class SynthesizeService {
                 .stats(stats)
                 .isMutated(isMutated)
                 .build();
-        elixirCardRepository.save(card);
-
-        return new SynthesizeResponse(card.getId(), card.getName(), card.getGrade(), card.getImageUrl(),
-                card.getAdviserComment(), card.getSerialNumber(), card.getStats());
     }
 
     private void ensureNotAlreadySynthesizedToday(Long ownerId) {

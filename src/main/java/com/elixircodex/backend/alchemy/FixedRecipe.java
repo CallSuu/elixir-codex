@@ -10,59 +10,50 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapKeyColumn;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.List;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class ElixirCard {
+public class FixedRecipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long ownerId;
-
     private String name;
-
-    @Enumerated(EnumType.STRING)
-    private ElixirGrade grade;
 
     @Enumerated(EnumType.STRING)
     private ThemeCategory themeCategory;
 
-    private String imageUrl;
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private ElixirGrade grade = ElixirGrade.EPIC;
+
+    @ElementCollection
+    @CollectionTable(name = "fixed_recipe_required_ingredients", joinColumns = @JoinColumn(name = "fixed_recipe_id"))
+    @Column(name = "ingredient_name")
+    private List<String> requiredIngredientNames;
+
+    @ElementCollection
+    @CollectionTable(name = "fixed_recipe_bonus_stats", joinColumns = @JoinColumn(name = "fixed_recipe_id"))
+    @Column(name = "stat_name")
+    private List<String> bonusStatNames;
+
+    private int bonusPercent;
+
+    private String cardDescription;
 
     private String adviserComment;
 
-    private Long serialNumber;
-
-    private String ingredientSummary;
-
-    private boolean isMutated;
-
     @Column(columnDefinition = "TEXT")
     private String scientificExplanation;
-
-    @Column(columnDefinition = "TEXT")
-    private String cardDescription;
-
-    @ElementCollection
-    @CollectionTable(name = "elixir_card_stats", joinColumns = @JoinColumn(name = "elixir_card_id"))
-    @MapKeyColumn(name = "stat_name")
-    @Column(name = "stat_value")
-    private Map<String, Integer> stats;
-
-    @Builder.Default
-    private LocalDateTime createdAt = LocalDateTime.now();
 }

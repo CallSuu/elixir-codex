@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.alchemy.CodexControllerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-08-15T15:39:08.498Z" hostname="Suui-MacBookPro.local" time="0.042">
+<testsuite name="com.elixircodex.backend.alchemy.CodexControllerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-08-18T07:23:21.808Z" hostname="Suui-MacBookPro.local" time="0.042">
   <properties/>
-  <testcase name="돌연변이_목록_조회는_돌연변이_카드만_반환한다()" classname="com.elixircodex.backend.alchemy.CodexControllerTest" time="0.032"/>
-  <testcase name="본인_카드id면_상세정보를_반환한다()" classname="com.elixircodex.backend.alchemy.CodexControllerTest" time="0.005"/>
-  <testcase name="소유자의_카드목록을_요약형태로_반환하되_돌연변이는_제외한다()" classname="com.elixircodex.backend.alchemy.CodexControllerTest" time="0.002"/>
+  <testcase name="돌연변이_목록_조회는_돌연변이_카드만_반환한다()" classname="com.elixircodex.backend.alchemy.CodexControllerTest" time="0.036"/>
+  <testcase name="본인_카드id면_상세정보를_반환한다()" classname="com.elixircodex.backend.alchemy.CodexControllerTest" time="0.003"/>
+  <testcase name="소유자의_카드목록을_요약형태로_반환하되_돌연변이는_제외한다()" classname="com.elixircodex.backend.alchemy.CodexControllerTest" time="0.001"/>
   <testcase name="다른_유저의_카드를_조회하면_존재하지_않는_카드와_동일한_예외를_던진다()" classname="com.elixircodex.backend.alchemy.CodexControllerTest" time="0.001"/>
-  <testcase name="존재하지_않는_카드id면_예외를_던진다()" classname="com.elixircodex.backend.alchemy.CodexControllerTest" time="0.001"/>
+  <testcase name="존재하지_않는_카드id면_예외를_던진다()" classname="com.elixircodex.backend.alchemy.CodexControllerTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
