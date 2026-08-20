@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.stack.StackControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:39.884Z" hostname="Suui-MacBookPro.local" time="0.002">
+<testsuite name="com.elixircodex.backend.stack.StackControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-20T18:33:46.584Z" hostname="Suui-MacBookPro.local" time="0.002">
   <properties/>
   <testcase name="정상_요청이면_점수합산과_제휴여부와_자동편입_영양제목록을_반환한다()" classname="com.elixircodex.backend.stack.StackControllerTest" time="0.001"/>
   <testcase name="검증_실패_예외는_그대로_전파된다()" classname="com.elixircodex.backend.stack.StackControllerTest" time="0.001"/>

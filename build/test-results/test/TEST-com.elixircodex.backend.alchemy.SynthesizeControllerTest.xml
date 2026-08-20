@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.alchemy.SynthesizeControllerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:37.111Z" hostname="Suui-MacBookPro.local" time="0.051">
+<testsuite name="com.elixircodex.backend.alchemy.SynthesizeControllerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-08-20T18:33:44.489Z" hostname="Suui-MacBookPro.local" time="0.039">
   <properties/>
-  <testcase name="일일_제한_초과_예외는_그대로_전파된다()" classname="com.elixircodex.backend.alchemy.SynthesizeControllerTest" time="0.044"/>
+  <testcase name="일일_제한_초과_예외는_그대로_전파된다()" classname="com.elixircodex.backend.alchemy.SynthesizeControllerTest" time="0.034"/>
   <testcase name="GPT_호출_실패_예외는_그대로_전파된다()" classname="com.elixircodex.backend.alchemy.SynthesizeControllerTest" time="0.002"/>
-  <testcase name="스택_검증_실패_예외는_그대로_전파된다()" classname="com.elixircodex.backend.alchemy.SynthesizeControllerTest" time="0.002"/>
+  <testcase name="스택_검증_실패_예외는_그대로_전파된다()" classname="com.elixircodex.backend.alchemy.SynthesizeControllerTest" time="0.001"/>
   <testcase name="정상_요청이면_결과를_그대로_반환한다()" classname="com.elixircodex.backend.alchemy.SynthesizeControllerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.auth.AuthenticatedUserServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:37.444Z" hostname="Suui-MacBookPro.local" time="0.025">
+<testsuite name="com.elixircodex.backend.auth.AuthenticatedUserServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-08-20T18:33:44.663Z" hostname="Suui-MacBookPro.local" time="0.022">
   <properties/>
-  <testcase name="인증된_이메일에_매칭되는_유저가_없으면_예외를_던진다()" classname="com.elixircodex.backend.auth.AuthenticatedUserServiceTest" time="0.024"/>
+  <testcase name="인증된_이메일에_매칭되는_유저가_없으면_예외를_던진다()" classname="com.elixircodex.backend.auth.AuthenticatedUserServiceTest" time="0.02"/>
   <testcase name="인증된_이메일에_매칭되는_유저가_있으면_id를_반환한다()" classname="com.elixircodex.backend.auth.AuthenticatedUserServiceTest" time="0.001"/>
   <testcase name="인증_정보가_없으면_예외를_던진다()" classname="com.elixircodex.backend.auth.AuthenticatedUserServiceTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
