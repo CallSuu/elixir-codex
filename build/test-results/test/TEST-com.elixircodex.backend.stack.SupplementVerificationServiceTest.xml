@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.stack.SupplementVerificationServiceTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:39.935Z" hostname="Suui-MacBookPro.local" time="0.029">
+<testsuite name="com.elixircodex.backend.stack.SupplementVerificationServiceTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-08-20T18:33:46.629Z" hostname="Suui-MacBookPro.local" time="0.026">
   <properties/>
-  <testcase name="이미지를_읽을_수_없으면_400계열_예외를_던지고_GPT를_호출하지_않는다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.018"/>
+  <testcase name="이미지를_읽을_수_없으면_400계열_예외를_던지고_GPT를_호출하지_않는다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.017"/>
   <testcase name="신뢰도가_임계값_이상이면_인증된_상태로_저장된다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.002"/>
   <testcase name="신뢰도가_임계값_미만이면_예외없이_미인증_상태로_저장된다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.001"/>
   <testcase name="제품명이_제휴목록에_없으면_제휴상품이_아니다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.001"/>
   <testcase name="이미지가_null이면_400계열_예외를_던지고_GPT를_호출하지_않는다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.0"/>
   <testcase name="신뢰도_점수가_SupplementLog에_저장된다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.0"/>
-  <testcase name="제품명이_제휴목록에_포함되면_제휴상품으로_판정된다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.002"/>
+  <testcase name="제품명이_제휴목록에_포함되면_제휴상품으로_판정된다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.001"/>
   <testcase name="신뢰도가_저장되지_않은_기록도_목록조회시_예외없이_0으로_반환된다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.001"/>
-  <testcase name="소유자의_인증기록_목록을_최신순으로_반환한다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.001"/>
+  <testcase name="소유자의_인증기록_목록을_최신순으로_반환한다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.0"/>
   <testcase name="GPT_응답이_JSON이_아니면_전용_예외를_던진다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.001"/>
   <testcase name="제휴목록_매칭은_대소문자를_무시한다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.0"/>
   <testcase name="GPT_호출이_실패하면_전용_예외를_던진다()" classname="com.elixircodex.backend.stack.SupplementVerificationServiceTest" time="0.0"/>

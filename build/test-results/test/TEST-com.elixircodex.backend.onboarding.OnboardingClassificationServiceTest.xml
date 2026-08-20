@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-08-18T15:07:38.595Z" hostname="Suui-MacBookPro.local" time="0.015">
+<testsuite name="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-08-20T18:33:45.505Z" hostname="Suui-MacBookPro.local" time="0.012">
   <properties/>
-  <testcase name="classify는_GPT_호출이_실패하면_전용_예외를_던지고_User와_무관하다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.002"/>
+  <testcase name="classify는_GPT_호출이_실패하면_전용_예외를_던지고_User와_무관하다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
   <testcase name="피로_에너지로_분류된다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
   <testcase name="잘못된_카테고리_값이_오면_예외를_던진다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
-  <testcase name="수면_휴식으로_분류된다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.002"/>
+  <testcase name="수면_휴식으로_분류된다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.0"/>
   <testcase name="존재하지_않는_유저면_GPT호출없이_예외를_던진다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
   <testcase name="classify는_User_조회_없이_카테고리만_반환한다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
   <testcase name="분류_결과로_User의_selectedCategory가_업데이트된다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
   <testcase name="같은_유저를_두번_호출하면_두번째_결과로_다시_덮어써진다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
   <testcase name="GPT_응답이_JSON이_아니면_전용_예외를_던진다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
-  <testcase name="피부_항산화로_분류되면_라벨과_함께_반환된다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
-  <testcase name="GPT_호출이_실패하면_전용_예외를_던진다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
+  <testcase name="피부_항산화로_분류되면_라벨과_함께_반환된다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.0"/>
+  <testcase name="GPT_호출이_실패하면_전용_예외를_던진다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.0"/>
   <testcase name="혈당_다이어트로_분류된다()" classname="com.elixircodex.backend.onboarding.OnboardingClassificationServiceTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
